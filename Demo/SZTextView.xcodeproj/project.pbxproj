@@ -23,6 +23,7 @@
 		5B8D20E116F1717200D92F51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D20BC16F1717100D92F51 /* Foundation.framework */; };
 		5B8D20E916F1717200D92F51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D20E716F1717200D92F51 /* InfoPlist.strings */; };
 		5B8D20EC16F1717200D92F51 /* SZTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */; };
+		5B8D20F816F171FC00D92F51 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D20F616F171FC00D92F51 /* SZTextView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,8 +57,10 @@
 		5B8D20DE16F1717200D92F51 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
 		5B8D20E616F1717200D92F51 /* SZTextViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SZTextViewTests-Info.plist"; sourceTree = "<group>"; };
 		5B8D20E816F1717200D92F51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B8D20EA16F1717200D92F51 /* SZTextViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; path = SZTextViewTests.h; sourceTree = "<group>"; };
-		5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTextViewTests.m; sourceTree = "<group>"; };
+		5B8D20EA16F1717200D92F51 /* SZTextViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; name = SZTextViewTests.h; path = ../SZTextViewTests/SZTextViewTests.h; sourceTree = "<group>"; };
+		5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SZTextViewTests.m; path = ../SZTextViewTests/SZTextViewTests.m; sourceTree = "<group>"; };
+		5B8D20F516F171FC00D92F51 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; name = SZTextView.h; path = ../../Classes/SZTextView.h; sourceTree = "<group>"; };
+		5B8D20F616F171FC00D92F51 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = ../../Classes/SZTextView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +126,8 @@
 				5B8D20D516F1717100D92F51 /* SZViewController.h */,
 				5B8D20D616F1717100D92F51 /* SZViewController.m */,
 				5B8D20C116F1717100D92F51 /* Supporting Files */,
+				5B8D20F516F171FC00D92F51 /* SZTextView.h */,
+				5B8D20F616F171FC00D92F51 /* SZTextView.m */,
 			);
 			path = SZTextView;
 			sourceTree = "<group>";
@@ -148,7 +153,8 @@
 				5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */,
 				5B8D20E516F1717200D92F51 /* Supporting Files */,
 			);
-			path = SZTextViewTests;
+			name = SZTextViewTests;
+			path = ../SZTextViewTests;
 			sourceTree = "<group>";
 		};
 		5B8D20E516F1717200D92F51 /* Supporting Files */ = {
@@ -274,6 +280,7 @@
 				5B8D20C716F1717100D92F51 /* main.m in Sources */,
 				5B8D20CB16F1717100D92F51 /* SZAppDelegate.m in Sources */,
 				5B8D20D716F1717100D92F51 /* SZViewController.m in Sources */,
+				5B8D20F816F171FC00D92F51 /* SZTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -318,6 +325,7 @@
 				5B8D20E816F1717200D92F51 /* en */,
 			);
 			name = InfoPlist.strings;
+			path = ../SZTextViewTests;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -411,7 +419,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
-				INFOPLIST_FILE = "SZTextViewTests/SZTextViewTests-Info.plist";
+				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -428,7 +436,7 @@
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
-				INFOPLIST_FILE = "SZTextViewTests/SZTextViewTests-Info.plist";
+				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = octest;
@@ -454,6 +462,7 @@
 				5B8D20F116F1717200D92F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5B8D20F216F1717200D92F51 /* Build configuration list for PBXNativeTarget "SZTextViewTests" */ = {
 			isa = XCConfigurationList;
@@ -462,6 +471,7 @@
 				5B8D20F416F1717200D92F51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
