@@ -17,8 +17,11 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
+    [[SZTextView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
+
     self.textView.placeholder = @"Enter lorem ipsum here";
-    self.textView.placeholderTextColor = [UIColor lightGrayColor];
+//    self.textView.placeholderTextColor = [UIColor redColor];
     self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 }
 

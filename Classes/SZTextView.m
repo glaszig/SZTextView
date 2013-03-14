@@ -13,7 +13,6 @@
 @end
 
 static NSString *kPlaceholderKey = @"placeholder";
-static NSString *kPlaceholderTextColorKey = @"placeholderTextColor";
 static NSString *kFontKey = @"font";
 static float kUITextViewPadding = 8.0;
 
@@ -53,8 +52,6 @@ static float kUITextViewPadding = 8.0;
 
     [self addObserver:self forKeyPath:kPlaceholderKey
               options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:kPlaceholderTextColorKey
-              options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kFontKey
               options:NSKeyValueObservingOptionNew context:nil];
 }
@@ -79,13 +76,20 @@ static float kUITextViewPadding = 8.0;
         self._placeholderLabel.text = [change valueForKey:NSKeyValueChangeNewKey];
         [self._placeholderLabel sizeToFit];
     }
-    if ([keyPath isEqualToString:kPlaceholderTextColorKey]) {
-        self._placeholderLabel.textColor = [change valueForKey:NSKeyValueChangeNewKey];
-    }
     if ([keyPath isEqualToString:kFontKey]) {
         self._placeholderLabel.font = [change valueForKey:NSKeyValueChangeNewKey];
         [self._placeholderLabel sizeToFit];
     }
+}
+
+- (void)setPlaceholderTextColor:(UIColor *)placeholderTextColor
+{
+    self._placeholderLabel.textColor = placeholderTextColor;
+}
+
+- (UIColor *)placeholderTextColor
+{
+    return self._placeholderLabel.textColor;
 }
 
 - (void)textDidChange:(NSNotification *)aNotification
@@ -101,7 +105,6 @@ static float kUITextViewPadding = 8.0;
 {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserver:self forKeyPath:kPlaceholderKey];
-    [self removeObserver:self forKeyPath:kPlaceholderTextColorKey];
     [self removeObserver:self forKeyPath:kFontKey];
 }
 
