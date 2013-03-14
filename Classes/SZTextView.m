@@ -38,7 +38,6 @@ static float kUITextViewPadding = 8.0;
     self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
     self._placeholderLabel.opaque = NO;
     self._placeholderLabel.backgroundColor = [UIColor clearColor];
-    self._placeholderLabel.text = @"Foo";
     self._placeholderLabel.textColor = [UIColor grayColor];
     self._placeholderLabel.textAlignment = self.textAlignment;
     self._placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
