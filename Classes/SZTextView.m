@@ -49,7 +49,8 @@ static float kUITextViewPadding = 8.0;
     // some observations
     NSNotificationCenter *defaultCenter;
     defaultCenter = [NSNotificationCenter defaultCenter];
-    [defaultCenter addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:self];
+    [defaultCenter addObserver:self selector:@selector(textDidChange:)
+                          name:UITextViewTextDidChangeNotification object:self];
 
     [self addObserver:self forKeyPath:kPlaceholderKey
               options:NSKeyValueObservingOptionNew context:nil];
