@@ -20,7 +20,6 @@
     self.textView.placeholder = @"Enter lorem ipsum here";
     self.textView.placeholderTextColor = [UIColor lightGrayColor];
     self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
-    self.textView.contentInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
 }
 
 - (void)didReceiveMemoryWarning
