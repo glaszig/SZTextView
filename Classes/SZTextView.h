@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface SZTextView : UITextView
-
+@property (copy, nonatomic) NSString *placeholder;
+@property (copy, nonatomic) UIColor *placeholderTextColor;
 @end

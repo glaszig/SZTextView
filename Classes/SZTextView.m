@@ -8,24 +8,101 @@
 
 #import "SZTextView.h"
 
+@interface SZTextView ()
+@property (strong, nonatomic) UILabel *_placeholderLabel;
+@end
+
+static NSString *kPlaceholderKey = @"placeholder";
+static NSString *kPlaceholderTextColorKey = @"placeholderTextColor";
+static NSString *kFontKey = @"font";
+static float kUITextViewPadding = 8.0;
+
 @implementation SZTextView
 
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+        [self awakeFromNib];
     }
     return self;
 }
 
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
+- (void)awakeFromNib
 {
-    // Drawing code
+    // the label which displays the placeholder
+    // needs to inherit some properties from its parent text view
+
+    // account for standard UITextViewPadding
+    CGRect frame = CGRectMake(kUITextViewPadding, kUITextViewPadding, 0, 0);
+    self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
+    self._placeholderLabel.opaque = NO;
+    self._placeholderLabel.backgroundColor = [UIColor clearColor];
+    self._placeholderLabel.text = @"Foo";
+    self._placeholderLabel.textColor = [UIColor grayColor];
+    self._placeholderLabel.textAlignment = self.textAlignment;
+    self._placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self._placeholderLabel.font = self.font;
+    [self._placeholderLabel sizeToFit];
+    [self addSubview:self._placeholderLabel];
+
+    // some observations
+    NSNotificationCenter *defaultCenter;
+    defaultCenter = [NSNotificationCenter defaultCenter];
+    [defaultCenter addObserver:self selector:@selector(textDidChange:) name:UITextViewTextDidChangeNotification object:self];
+
+    [self addObserver:self forKeyPath:kPlaceholderKey
+              options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kPlaceholderTextColorKey
+              options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kFontKey
+              options:NSKeyValueObservingOptionNew context:nil];
 }
-*/
+
+- (void)layoutSubviews
+{
+    [super layoutSubviews];
+
+    UIEdgeInsets inset = self.contentInset;
+    CGRect frame = self._placeholderLabel.frame;
+    // the width needs to be limited to the text view's width
+    // to prevent the label text from bleeding off
+    frame.size.width = self.bounds.size.width;
+    frame.size.width-= kUITextViewPadding + inset.right + inset.left;
+    self._placeholderLabel.frame = frame;
+}
+
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
+                        change:(NSDictionary *)change context:(void *)context
+{
+    if ([keyPath isEqualToString:kPlaceholderKey]) {
+        self._placeholderLabel.text = [change valueForKey:NSKeyValueChangeNewKey];
+        [self._placeholderLabel sizeToFit];
+    }
+    if ([keyPath isEqualToString:kPlaceholderTextColorKey]) {
+        self._placeholderLabel.textColor = [change valueForKey:NSKeyValueChangeNewKey];
+    }
+    if ([keyPath isEqualToString:kFontKey]) {
+        self._placeholderLabel.font = [change valueForKey:NSKeyValueChangeNewKey];
+        [self._placeholderLabel sizeToFit];
+    }
+}
+
+- (void)textDidChange:(NSNotification *)aNotification
+{
+    if (self.text.length < 1) {
+        [self addSubview:self._placeholderLabel];
+    } else {
+        [self._placeholderLabel removeFromSuperview];
+    }
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [self removeObserver:self forKeyPath:kPlaceholderKey];
+    [self removeObserver:self forKeyPath:kPlaceholderTextColorKey];
+    [self removeObserver:self forKeyPath:kFontKey];
+}
 
 @end
