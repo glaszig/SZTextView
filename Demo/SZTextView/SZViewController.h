@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SZTextView.h"
 
 @interface SZViewController : UIViewController
-
+@property (weak, nonatomic) IBOutlet SZTextView *textView;
 @end

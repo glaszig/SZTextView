@@ -8,7 +8,7 @@
 
 #import "SZViewController.h"
 
-@interface SZViewController ()
+@interface SZViewController () <UITextViewDelegate>
 
 @end
 
@@ -17,7 +17,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    self.textView.placeholder = @"Enter lorem ipsum here";
+    self.textView.placeholderTextColor = [UIColor lightGrayColor];
+    self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+    self.textView.contentInset = UIEdgeInsetsMake(20.0, 20.0, 20.0, 20.0);
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +29,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)textViewDidChange:(UITextView *)textView
+{
+//    [textView resignFirstResponder];
+}
 @end
