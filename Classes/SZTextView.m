@@ -85,8 +85,10 @@ static float kUITextViewPadding = 8.0;
     }
     if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
-        if (newText.length) {
+        if (newText.length > 0) {
             [self._placeholderLabel removeFromSuperview];
+        } else {
+            [self addSubview:self._placeholderLabel];
         }
     }
 }
