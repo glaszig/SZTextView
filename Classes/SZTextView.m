@@ -55,7 +55,8 @@ static float kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kFontKey
               options:NSKeyValueObservingOptionNew context:nil];
-    [self addObserver:self forKeyPath:kTextKey options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kTextKey
+              options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)layoutSubviews
