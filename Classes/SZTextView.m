@@ -14,6 +14,7 @@
 
 static NSString *kPlaceholderKey = @"placeholder";
 static NSString *kFontKey = @"font";
+static NSString *kTextKey = @"text";
 static float kUITextViewPadding = 8.0;
 
 @implementation SZTextView
@@ -54,6 +55,7 @@ static float kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kFontKey
               options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kTextKey options:NSKeyValueObservingOptionNew context:nil];
 }
 
 - (void)layoutSubviews
@@ -79,6 +81,12 @@ static float kUITextViewPadding = 8.0;
     if ([keyPath isEqualToString:kFontKey]) {
         self._placeholderLabel.font = [change valueForKey:NSKeyValueChangeNewKey];
         [self._placeholderLabel sizeToFit];
+    }
+    if ([keyPath isEqualToString:kTextKey]) {
+        NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
+        if (newText.length) {
+            [self._placeholderLabel removeFromSuperview];
+        }
     }
 }
 
@@ -106,6 +114,7 @@ static float kUITextViewPadding = 8.0;
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     [self removeObserver:self forKeyPath:kPlaceholderKey];
     [self removeObserver:self forKeyPath:kFontKey];
+    [self removeObserver:self forKeyPath:kTextKey];
 }
 
 @end
