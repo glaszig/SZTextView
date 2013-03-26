@@ -7,6 +7,8 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 Your iOS project. (Tested on iOS versions 5.0 and 6.1)
 
+> **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.
+
 ## Installation
 
 The easiest way would be to clone this repo and add the project to your Xcode workspace.  
