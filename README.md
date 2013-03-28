@@ -36,3 +36,7 @@ A simple demo is included.
 # License
 
 Published under the [MIT license](http://opensource.org/licenses/MIT).
+
+> I'd be glad to know if anybody except me actually uses this.
+> So please drop me a message telling me where you're using SZTextView. Thanks.
+
