@@ -110,6 +110,7 @@ static float kUITextViewPadding = 8.0;
 {
     if (self.text.length < 1) {
         [self addSubview:self._placeholderLabel];
+        [self sendSubviewToBack: self._placeholderLabel];
     } else {
         [self._placeholderLabel removeFromSuperview];
     }
