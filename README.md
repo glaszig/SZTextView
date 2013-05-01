@@ -37,6 +37,8 @@ A simple demo is included.
 
 Published under the [MIT license](http://opensource.org/licenses/MIT).
 
-> I'd be glad to know if anybody except me actually uses this.
-> So please drop me a message telling me where you're using SZTextView. Thanks.
+**Note**
+
+I've developed this component for [Cocktailicious](http://www.appstore.com/cocktailicious). You should check it out \*shamelessplug\*.  
+Please let me now if and how you use this component. I'm curious.
 
