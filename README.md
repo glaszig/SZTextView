@@ -39,6 +39,6 @@ Published under the [MIT license](http://opensource.org/licenses/MIT).
 
 **Note**
 
-I've developed this component for [Cocktailicious](http://www.appstore.com/cocktailicious). You should check it out \*shamelessplug\*.  
+I've developed this component for [Cocktailicious](http://www.cocktailiciousapp.com). You should check it out \*shamelessplug\*.  
 Please let me now if and how you use this component. I'm curious.
 
