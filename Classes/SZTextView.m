@@ -42,6 +42,7 @@ static float kUITextViewPadding = 8.0;
     self._placeholderLabel.textAlignment = self.textAlignment;
     self._placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
     self._placeholderLabel.font = self.font;
+    self._placeholderLabel.text = self.placeholder;
     [self._placeholderLabel sizeToFit];
     [self addSubview:self._placeholderLabel];
 
@@ -57,12 +58,6 @@ static float kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
               options:NSKeyValueObservingOptionNew context:nil];
-              
-    
-    if (self.placeholder) {
-        // Set in User Defined RunTime Attributes, trigger action below
-        self.placeholder = self.placeholder;
-    }
 
 }
 
