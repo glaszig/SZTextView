@@ -57,6 +57,14 @@ static float kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
               options:NSKeyValueObservingOptionNew context:nil];
+              
+    // defined in User Defined Runtime Attributes 
+    if (self.placeholder) {
+        self._placeholderLabel.text = self.placeholder;
+        [self._placeholderLabel sizeToFit];
+
+    }
+
 }
 
 - (void)layoutSubviews
