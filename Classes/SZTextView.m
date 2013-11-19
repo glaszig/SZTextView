@@ -8,6 +8,10 @@
 
 #import "SZTextView.h"
 
+#define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
+#define Y_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 0.0f : kUITextViewPadding)
+#define X_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 4.0f : kUITextViewPadding)
+
 @interface SZTextView ()
 @property (strong, nonatomic) UILabel *_placeholderLabel;
 @end
@@ -34,7 +38,8 @@ static float kUITextViewPadding = 8.0;
     // needs to inherit some properties from its parent text view
 
     // account for standard UITextViewPadding
-    CGRect frame = CGRectMake(kUITextViewPadding, kUITextViewPadding, 0, 0);
+    
+    CGRect frame = CGRectMake(X_PADDING, Y_PADDING, 0, 0);
     self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
     self._placeholderLabel.opaque = NO;
     self._placeholderLabel.backgroundColor = [UIColor clearColor];
@@ -65,12 +70,27 @@ static float kUITextViewPadding = 8.0;
 {
     [super layoutSubviews];
 
-    UIEdgeInsets inset = self.contentInset;
+    UIEdgeInsets inset;
+    
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+        inset = self.textContainerInset;
+    }
+    else {
+        inset = self.contentInset;
+    }
+    
     CGRect frame = self._placeholderLabel.frame;
+    
     // the width needs to be limited to the text view's width
     // to prevent the label text from bleeding off
     frame.size.width = self.bounds.size.width;
-    frame.size.width-= kUITextViewPadding + inset.right + inset.left;
+    frame.size.width -= X_PADDING + inset.right + inset.left;
+    
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+        frame.origin.y = Y_PADDING + inset.top;
+        frame.origin.x = X_PADDING + inset.left;
+    }
+    
     self._placeholderLabel.frame = frame;
 }
 
