@@ -45,11 +45,16 @@ static float kUITextViewPadding = 8.0;
     self._placeholderLabel.backgroundColor = [UIColor clearColor];
     self._placeholderLabel.textColor = [UIColor grayColor];
     self._placeholderLabel.textAlignment = self.textAlignment;
-    self._placeholderLabel.lineBreakMode = NSLineBreakByTruncatingTail;
+    self._placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    self._placeholderLabel.numberOfLines = 0;
     self._placeholderLabel.font = self.font;
-    self._placeholderLabel.text = self.placeholder;
-    [self._placeholderLabel sizeToFit];
+    
+    if (_placeholder) {
+        self._placeholderLabel.text = _placeholder;
+    }
+    
     [self addSubview:self._placeholderLabel];
+    self.clipsToBounds = YES;
 
     // some observations
     NSNotificationCenter *defaultCenter;
@@ -66,10 +71,20 @@ static float kUITextViewPadding = 8.0;
 
 }
 
+- (void)setPlaceholder:(NSString *)placeholderText
+{
+    _placeholder = placeholderText;
+    [self resizePlaceholderFrame];
+}
+
 - (void)layoutSubviews
 {
     [super layoutSubviews];
+    [self resizePlaceholderFrame];
+}
 
+- (void)resizePlaceholderFrame
+{
     UIEdgeInsets inset;
     
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
@@ -84,7 +99,13 @@ static float kUITextViewPadding = 8.0;
     // the width needs to be limited to the text view's width
     // to prevent the label text from bleeding off
     frame.size.width = self.bounds.size.width;
-    frame.size.width -= X_PADDING + inset.right + inset.left;
+    frame.size.width -= 2 * X_PADDING + inset.right + inset.left;
+    
+    CGSize labelSize = [_placeholder sizeWithFont:self._placeholderLabel.font
+                                constrainedToSize:CGSizeMake(frame.size.width, 1000)
+                                    lineBreakMode:NSLineBreakByWordWrapping];
+    
+    frame.size.height = labelSize.height;
     
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
         frame.origin.y = Y_PADDING + inset.top;
