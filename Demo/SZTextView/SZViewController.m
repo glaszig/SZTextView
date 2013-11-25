@@ -26,7 +26,7 @@
         self.textView.textContainerInset = UIEdgeInsetsMake(inset, inset, inset, inset);
     }
 
-    self.textView.placeholder = @"Enter lorem ipsum here weofi ahöslfawoeö ifhaöwefslf nsdlfa woefhae faö aöh aöefhaöew fiöahfa öef öfahfa ";
+    self.textView.placeholder = @"Enter lorem ipsum here weofi ahöslfawoeö color. Dolor sit amet multiple.";
 //    self.textView.placeholderTextColor = [UIColor redColor];
     self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 }
