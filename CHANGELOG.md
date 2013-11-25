@@ -10,7 +10,7 @@
 
 **1.0.1**
 
- - Initializing the placeholder text so that it can be set via Interface Builder's "User Defined Runtime Attributes"
+ - Initializing the placeholder text so that it can be set via Interface Builder's "User Defined Runtime Attributes" [@ahalls]
 
 **1.0.0**
 
