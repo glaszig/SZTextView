@@ -5,7 +5,7 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 ## Requirements
 
-Your iOS project. (Tested on iOS versions 5.0 and 6.1)
+Your iOS project. (Tested on iOS versions 5.0, 6.1 and 7.0)
 
 > **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.
 

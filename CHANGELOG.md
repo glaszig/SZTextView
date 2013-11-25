@@ -1,5 +1,9 @@
 # Changelog
 
+**1.0.3**
+
+ - Multiline placeholder support [@tcirwin]
+
 **1.0.2**
 
  - Support for iOS 7's text container insets [@tcirwin]
