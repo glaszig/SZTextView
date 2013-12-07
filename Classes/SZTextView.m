@@ -13,7 +13,7 @@
 #define X_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 4.0f : kUITextViewPadding)
 
 @interface SZTextView ()
-@property (strong, nonatomic) UILabel *_placeholderLabel;
+@property (strong, nonatomic) UITextView *_placeholderLabel;
 @end
 
 static NSString *kPlaceholderKey = @"placeholder";
@@ -40,13 +40,15 @@ static float kUITextViewPadding = 8.0;
     // account for standard UITextViewPadding
     
     CGRect frame = CGRectMake(X_PADDING, Y_PADDING, 0, 0);
-    self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
+    self._placeholderLabel = [[UITextView alloc] initWithFrame:frame];
     self._placeholderLabel.opaque = NO;
     self._placeholderLabel.backgroundColor = [UIColor clearColor];
     self._placeholderLabel.textColor = [UIColor grayColor];
     self._placeholderLabel.textAlignment = self.textAlignment;
-    self._placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self._placeholderLabel.numberOfLines = 0;
+    self._placeholderLabel.editable = NO;
+    self._placeholderLabel.selectable = NO;
+    self._placeholderLabel.scrollEnabled = NO;
+    self._placeholderLabel.userInteractionEnabled = NO;
     self._placeholderLabel.font = self.font;
     
     if (_placeholder) {
