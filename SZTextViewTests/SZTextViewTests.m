@@ -11,7 +11,7 @@
 
 @interface SZTextViewTests () {
     SZTextView *textView;
-    UILabel *placeholderLabel;
+    UITextView *placeholderLabel;
 }
 
 @end
@@ -41,10 +41,11 @@
 - (void)testPlaceholderLabelChangeSuperviewAfterSetText
 {
     textView.text = @"Foobar";
-    STAssertNil(placeholderLabel.superview, nil);
+    STAssertNil(placeholderLabel.superview, @"Placeholder should not have a superview if the containing text view has input");
 
     textView.text = nil;
-    STAssertNotNil(placeholderLabel.superview, nil);
+    NSLog(@"superview: %@", placeholderLabel.superview);
+    STAssertNotNil(placeholderLabel.superview, @"Placeholder should have a superview if the containing text view has no input");
 }
 
 - (void)testPlaceholderLabelShouldInheritFont
