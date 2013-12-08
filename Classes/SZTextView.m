@@ -191,7 +191,10 @@ static float kUITextViewPadding = 8.0;
     [self removeObserver:self forKeyPath:kPlaceholderKey];
     [self removeObserver:self forKeyPath:kFontKey];
     [self removeObserver:self forKeyPath:kTextKey];
-    [self removeObserver:self forKeyPath:kExclusionPaths];
+
+    if (HAS_TEXT_CONTAINER) {
+        [self.textContainer removeObserver:self forKeyPath:kExclusionPaths];
+    }
 }
 
 @end
