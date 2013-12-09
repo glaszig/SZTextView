@@ -11,7 +11,7 @@
 
 @interface SZTextViewTests () {
     SZTextView *textView;
-    UITextView *placeholderLabel;
+    UITextView *placeholderTextView;
 }
 
 @end
@@ -22,36 +22,36 @@
 {
     [super setUp];
     textView = [[SZTextView alloc] init];
-    placeholderLabel = [textView valueForKey:@"_placeholderLabel"];
+    placeholderTextView = [textView valueForKey:@"_placeholderTextView"];
 }
 
 - (void)tearDown
 {
-    placeholderLabel = nil;
+    placeholderTextView = nil;
     textView = nil;
     [super tearDown];
 }
 
-- (void)testPlaceholderLabelSuperViewAfterInit
+- (void)testPlaceholderTextViewSuperViewAfterInit
 {
-    STAssertNotNil(placeholderLabel.superview, @"should initially have a superview");
-    STAssertEqualObjects(placeholderLabel.superview, textView, @"placeholder superview should be the text view itself");
+    STAssertNotNil(placeholderTextView.superview, @"should initially have a superview");
+    STAssertEqualObjects(placeholderTextView.superview, textView, @"placeholder superview should be the text view itself");
 }
 
-- (void)testPlaceholderLabelChangeSuperviewAfterSetText
+- (void)testPlaceholderTextViewChangeSuperviewAfterSetText
 {
     textView.text = @"Foobar";
-    STAssertNil(placeholderLabel.superview, @"Placeholder should not have a superview if the containing text view has input");
+    STAssertNil(placeholderTextView.superview, @"Placeholder should not have a superview if the containing text view has input");
 
     textView.text = nil;
-    NSLog(@"superview: %@", placeholderLabel.superview);
-    STAssertNotNil(placeholderLabel.superview, @"Placeholder should have a superview if the containing text view has no input");
+    NSLog(@"superview: %@", placeholderTextView.superview);
+    STAssertNotNil(placeholderTextView.superview, @"Placeholder should have a superview if the containing text view has no input");
 }
 
-- (void)testPlaceholderLabelShouldInheritFont
+- (void)testPlaceholderTextViewShouldInheritFont
 {
     textView.font = [UIFont systemFontOfSize:20.0];
-    STAssertEqualObjects(placeholderLabel.font, textView.font, @"label and text view should have equal fonts");
+    STAssertEqualObjects(placeholderTextView.font, textView.font, @"label and text view should have equal fonts");
     
 }
 
