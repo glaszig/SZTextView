@@ -21,7 +21,7 @@
 static NSString * const kPlaceholderKey = @"placeholder";
 static NSString * const kFontKey = @"font";
 static NSString * const kTextKey = @"text";
-static NSString * const kExclusionPaths = @"exclusionPaths";
+static NSString * const kExclusionPathsKey = @"exclusionPaths";
 static float const kUITextViewPadding = 8.0;
 
 @implementation SZTextView
@@ -80,7 +80,7 @@ static float const kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     
     if (HAS_TEXT_CONTAINER) {
-        [self.textContainer addObserver:self forKeyPath:kExclusionPaths
+        [self.textContainer addObserver:self forKeyPath:kExclusionPathsKey
                                 options:NSKeyValueObservingOptionNew context:nil];
     }
 
@@ -157,7 +157,7 @@ static float const kUITextViewPadding = 8.0;
         } else {
             [self addSubview:self._placeholderTextView];
         }
-    } else if ([keyPath isEqualToString:kExclusionPaths]) {
+    } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
     }
@@ -194,7 +194,7 @@ static float const kUITextViewPadding = 8.0;
     [self removeObserver:self forKeyPath:kTextKey];
 
     if (HAS_TEXT_CONTAINER) {
-        [self.textContainer removeObserver:self forKeyPath:kExclusionPaths];
+        [self.textContainer removeObserver:self forKeyPath:kExclusionPathsKey];
     }
 }
 
