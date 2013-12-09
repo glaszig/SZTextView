@@ -2,7 +2,7 @@
 
 **1.1.0**
 
- - Placeholder now is an UITextView instance to support things like iOS 7's `exclusionPaths` [@Adrian2112]
+ - As of this release the placeholder is an instance of `UITextView` (instead of `UILabel`) which supports iOS 7's `exclusionPaths`, for example. If you have been using the private `_placeholderLabel` you will receive deprecation warnings. `_placeholderLabel` has been replaced with `_placeholderTextView` and will disappear in the next release.  [@Adrian2112]
 
 **1.0.3**
 
