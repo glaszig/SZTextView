@@ -1,4 +1,7 @@
-# SZTextView [![Build Status](https://travis-ci.org/glaszig/SZTextView.png?branch=master)](https://travis-ci.org/glaszig/SZTextView)
+# SZTextView 
+
+[![Build Status](https://travis-ci.org/glaszig/SZTextView.png?branch=master)](https://travis-ci.org/glaszig/SZTextView)
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/glaszig/sztextview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A drop-in UITextView replacement which gives you: a placeholder.  
 Technically it differs from other solutions in that it tries to work like UITextField's private `_placeholderLabel` so you should not suffer ugly glitches like jumping text views or loads of custom drawing code.
