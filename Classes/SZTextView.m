@@ -8,17 +8,19 @@
 
 #import "SZTextView.h"
 
+#define HAS_TEXT_CONTAINER [self respondsToSelector:@selector(textContainer)]
 #define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
 #define Y_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 0.0f : kUITextViewPadding)
 #define X_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 4.0f : kUITextViewPadding)
 
 @interface SZTextView ()
-@property (strong, nonatomic) UILabel *_placeholderLabel;
+@property (strong, nonatomic) UITextView *_placeholderLabel;
 @end
 
 static NSString *kPlaceholderKey = @"placeholder";
 static NSString *kFontKey = @"font";
 static NSString *kTextKey = @"text";
+static NSString *kExclusionPaths = @"exclusionPaths";
 static float kUITextViewPadding = 8.0;
 
 @implementation SZTextView
@@ -40,14 +42,21 @@ static float kUITextViewPadding = 8.0;
     // account for standard UITextViewPadding
     
     CGRect frame = CGRectMake(X_PADDING, Y_PADDING, 0, 0);
-    self._placeholderLabel = [[UILabel alloc] initWithFrame:frame];
+    self._placeholderLabel = [[UITextView alloc] initWithFrame:frame];
     self._placeholderLabel.opaque = NO;
     self._placeholderLabel.backgroundColor = [UIColor clearColor];
     self._placeholderLabel.textColor = [UIColor grayColor];
     self._placeholderLabel.textAlignment = self.textAlignment;
-    self._placeholderLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self._placeholderLabel.numberOfLines = 0;
+    self._placeholderLabel.textContainerInset = UIEdgeInsetsZero;
+    self._placeholderLabel.editable = NO;
+    self._placeholderLabel.selectable = NO;
+    self._placeholderLabel.scrollEnabled = NO;
+    self._placeholderLabel.userInteractionEnabled = NO;
     self._placeholderLabel.font = self.font;
+    
+    if (HAS_TEXT_CONTAINER) {
+        self._placeholderLabel.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
+    }
     
     if (_placeholder) {
         self._placeholderLabel.text = _placeholder;
@@ -68,6 +77,11 @@ static float kUITextViewPadding = 8.0;
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
               options:NSKeyValueObservingOptionNew context:nil];
+    
+    if (HAS_TEXT_CONTAINER) {
+        [self.textContainer addObserver:self forKeyPath:kExclusionPaths
+                                options:NSKeyValueObservingOptionNew context:nil];
+    }
 
 }
 
@@ -100,10 +114,19 @@ static float kUITextViewPadding = 8.0;
     // to prevent the label text from bleeding off
     frame.size.width = self.bounds.size.width;
     frame.size.width -= 2 * X_PADDING + inset.right + inset.left;
-    
+
     CGSize labelSize = [_placeholder sizeWithFont:self._placeholderLabel.font
                                 constrainedToSize:CGSizeMake(frame.size.width, 1000)
                                     lineBreakMode:NSLineBreakByWordWrapping];
+    
+    if (HAS_TEXT_CONTAINER) {
+        NSLayoutManager * layoutManager = self._placeholderLabel.layoutManager;
+        [layoutManager glyphRangeForTextContainer:self._placeholderLabel.textContainer];
+        CGFloat height = [layoutManager usedRectForTextContainer:self._placeholderLabel.textContainer].size.height;
+        
+        labelSize.height = height;
+    }
+    
     
     frame.size.height = labelSize.height;
     
@@ -133,6 +156,9 @@ static float kUITextViewPadding = 8.0;
         } else {
             [self addSubview:self._placeholderLabel];
         }
+    } else if ([keyPath isEqualToString:kExclusionPaths]) {
+        self._placeholderLabel.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
+        [self resizePlaceholderFrame];
     }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
@@ -165,6 +191,8 @@ static float kUITextViewPadding = 8.0;
     [self removeObserver:self forKeyPath:kPlaceholderKey];
     [self removeObserver:self forKeyPath:kFontKey];
     [self removeObserver:self forKeyPath:kTextKey];
+    [self.textContainer removeObserver:self forKeyPath:kExclusionPaths];
 }
 
 @end
+
