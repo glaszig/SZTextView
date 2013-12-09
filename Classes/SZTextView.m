@@ -18,11 +18,11 @@
 @property (strong, nonatomic) UITextView *_placeholderTextView;
 @end
 
-static NSString *kPlaceholderKey = @"placeholder";
-static NSString *kFontKey = @"font";
-static NSString *kTextKey = @"text";
-static NSString *kExclusionPaths = @"exclusionPaths";
-static float kUITextViewPadding = 8.0;
+static NSString * const kPlaceholderKey = @"placeholder";
+static NSString * const kFontKey = @"font";
+static NSString * const kTextKey = @"text";
+static NSString * const kExclusionPaths = @"exclusionPaths";
+static float const kUITextViewPadding = 8.0;
 
 @implementation SZTextView
 

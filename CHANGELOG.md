@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.0**
+
+ - Placeholder now is an UITextView instance to support things like iOS 7's `exclusionPaths` [@Adrian2112]
+
 **1.0.3**
 
  - Multiline placeholder support [@tcirwin]
