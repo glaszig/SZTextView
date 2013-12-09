@@ -10,8 +10,6 @@
 
 #define HAS_TEXT_CONTAINER [self respondsToSelector:@selector(textContainer)]
 #define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
-#define Y_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 0.0f : kUITextViewPadding)
-#define X_PADDING (HAS_TEXT_CONTAINER_INSETS(self) ? 4.0f : kUITextViewPadding)
 
 @interface SZTextView ()
 @property (strong, nonatomic) UITextView *_placeholderLabel DEPRECATED_ATTRIBUTE;
@@ -22,7 +20,7 @@ static NSString * const kPlaceholderKey = @"placeholder";
 static NSString * const kFontKey = @"font";
 static NSString * const kTextKey = @"text";
 static NSString * const kExclusionPathsKey = @"exclusionPaths";
-static float const kUITextViewPadding = 8.0;
+static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 @implementation SZTextView
 
@@ -42,18 +40,20 @@ static float const kUITextViewPadding = 8.0;
 
     // account for standard UITextViewPadding
     
-    CGRect frame = CGRectMake(X_PADDING, Y_PADDING, 0, 0);
+    CGRect frame = self.bounds;
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
     self._placeholderTextView.textColor = [UIColor grayColor];
     self._placeholderTextView.textAlignment = self.textAlignment;
-    self._placeholderTextView.textContainerInset = UIEdgeInsetsZero;
     self._placeholderTextView.editable = NO;
-    self._placeholderTextView.selectable = NO;
     self._placeholderTextView.scrollEnabled = NO;
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
+
+    if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
+        self._placeholderTextView.selectable = NO;
+    }
     
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
@@ -84,6 +84,11 @@ static float const kUITextViewPadding = 8.0;
                                 options:NSKeyValueObservingOptionNew context:nil];
     }
 
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+        [self addObserver:self forKeyPath:kTextContainerInsetKey
+                  options:NSKeyValueObservingOptionNew context:nil];
+    }
+
 }
 
 - (void)setPlaceholder:(NSString *)placeholderText
@@ -100,42 +105,8 @@ static float const kUITextViewPadding = 8.0;
 
 - (void)resizePlaceholderFrame
 {
-    UIEdgeInsets inset;
-    
-    if (HAS_TEXT_CONTAINER_INSETS(self)) {
-        inset = self.textContainerInset;
-    }
-    else {
-        inset = self.contentInset;
-    }
-    
     CGRect frame = self._placeholderTextView.frame;
-    
-    // the width needs to be limited to the text view's width
-    // to prevent the label text from bleeding off
-    frame.size.width = self.bounds.size.width;
-    frame.size.width -= 2 * X_PADDING + inset.right + inset.left;
-
-    CGSize labelSize = [_placeholder sizeWithFont:self._placeholderTextView.font
-                                constrainedToSize:CGSizeMake(frame.size.width, 1000)
-                                    lineBreakMode:NSLineBreakByWordWrapping];
-    
-    if (HAS_TEXT_CONTAINER) {
-        NSLayoutManager * layoutManager = self._placeholderTextView.layoutManager;
-        [layoutManager glyphRangeForTextContainer:self._placeholderTextView.textContainer];
-        CGFloat height = [layoutManager usedRectForTextContainer:self._placeholderTextView.textContainer].size.height;
-        
-        labelSize.height = height;
-    }
-    
-    
-    frame.size.height = labelSize.height;
-    
-    if (HAS_TEXT_CONTAINER_INSETS(self)) {
-        frame.origin.y = Y_PADDING + inset.top;
-        frame.origin.x = X_PADDING + inset.left;
-    }
-    
+    frame.size = self.bounds.size;
     self._placeholderTextView.frame = frame;
 }
 
@@ -144,11 +115,9 @@ static float const kUITextViewPadding = 8.0;
 {
     if ([keyPath isEqualToString:kPlaceholderKey]) {
         self._placeholderTextView.text = [change valueForKey:NSKeyValueChangeNewKey];
-        [self._placeholderTextView sizeToFit];
     }
     else if ([keyPath isEqualToString:kFontKey]) {
         self._placeholderTextView.font = [change valueForKey:NSKeyValueChangeNewKey];
-        [self._placeholderTextView sizeToFit];
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
@@ -160,8 +129,10 @@ static float const kUITextViewPadding = 8.0;
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
-    }
-    else {
+    } else if ([keyPath isEqualToString:kTextContainerInsetKey]) {
+        NSValue *value = [change objectForKey:NSKeyValueChangeNewKey];
+        self._placeholderTextView.textContainerInset = value.UIEdgeInsetsValue;
+    } else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
@@ -195,6 +166,10 @@ static float const kUITextViewPadding = 8.0;
 
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer removeObserver:self forKeyPath:kExclusionPathsKey];
+    }
+
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+        [self removeObserver:self forKeyPath:kTextContainerInsetKey];
     }
 }
 
