@@ -50,7 +50,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.scrollEnabled = NO;
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
-	self._placeholderTextView.isAccessibilityElement = NO;
+    self._placeholderTextView.isAccessibilityElement = NO;
 	
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
@@ -58,7 +58,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
-		self._placeholderTextView.textColor = [UIColor colorWithRed:199/255.0 green:199/255.0 blue:205/255.0 alpha:1.0];
+        self._placeholderTextView.textColor = [UIColor colorWithRed:199/255.0 green:199/255.0 blue:205/255.0 alpha:1.0];
     }
     
     if (_placeholder) {
