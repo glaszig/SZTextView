@@ -44,7 +44,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
-    self._placeholderTextView.textColor = [UIColor grayColor];
+    self._placeholderTextView.textColor = [UIColor lightGrayColor];
     self._placeholderTextView.textAlignment = self.textAlignment;
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
@@ -58,7 +58,6 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
-        self._placeholderTextView.textColor = [UIColor colorWithRed:199/255.0 green:199/255.0 blue:205/255.0 alpha:1.0];
     }
     
     if (_placeholder) {
