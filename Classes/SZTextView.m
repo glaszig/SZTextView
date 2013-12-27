@@ -44,13 +44,14 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
-    self._placeholderTextView.textColor = [UIColor grayColor];
+    self._placeholderTextView.textColor = [UIColor lightGrayColor];
     self._placeholderTextView.textAlignment = self.textAlignment;
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
-
+    self._placeholderTextView.isAccessibilityElement = NO;
+	
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
     }
