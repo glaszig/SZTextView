@@ -38,7 +38,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     // needs to inherit some properties from its parent text view
 
     // account for standard UITextViewPadding
-    
+
     CGRect frame = self.bounds;
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
@@ -50,19 +50,19 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
-	
+
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
     }
-    
+
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
     }
-    
+
     if (_placeholder) {
         self._placeholderTextView.text = _placeholder;
     }
-    
+
     [self addSubview:self._placeholderTextView];
     [self sendSubviewToBack:self._placeholderTextView];
     self.clipsToBounds = YES;
@@ -79,7 +79,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
               options:NSKeyValueObservingOptionNew context:nil];
-    
+
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer addObserver:self forKeyPath:kExclusionPathsKey
                                 options:NSKeyValueObservingOptionNew context:nil];
