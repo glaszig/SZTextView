@@ -1,5 +1,12 @@
 # Changelog
 
+**1.1.1**
+
+ - Using `[UIColor lightGrayColor]` as default placeholder text color -- #8
+ - Moving placeholder text view to the back to prevent cursor overlay -- #9
+ - Removed `_placeholderLabel` as announced in 1.1.0
+ - General cleanup
+
 **1.1.0**
 
  - As of this release the placeholder is an instance of `UITextView` (instead of `UILabel`) which supports iOS 7's `exclusionPaths`, for example. If you have been using the private `_placeholderLabel` you will receive deprecation warnings. `_placeholderLabel` has been replaced with `_placeholderTextView` and will disappear in the next release.  [@Adrian2112]
