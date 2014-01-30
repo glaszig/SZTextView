@@ -65,6 +65,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     }
     
     [self addSubview:self._placeholderTextView];
+    [self sendSubviewToBack:self._placeholderTextView];
     self.clipsToBounds = YES;
 
     // some observations
