@@ -12,7 +12,6 @@
 #define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
 
 @interface SZTextView ()
-@property (strong, nonatomic) UITextView *_placeholderLabel DEPRECATED_ATTRIBUTE;
 @property (strong, nonatomic) UITextView *_placeholderTextView;
 @end
 
@@ -173,20 +172,6 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
         [self removeObserver:self forKeyPath:kTextContainerInsetKey];
     }
-}
-
-#pragma mark - Deprecations
-
-- (void)set_placeholderLabel:(UITextView *)placeholderLabel
-{
-    NSLog(@"[SZTextView _placeholderLabel] is deprecated and will disappear in the next release of SZTextView.");
-    __placeholderTextView = placeholderLabel;
-}
-
-- (UITextView *)_placeholderLabel
-{
-    NSLog(@"[SZTextView _placeholderLabel] is deprecated and will disappear in the next release of SZTextView.");
-    return __placeholderTextView;
 }
 
 @end
