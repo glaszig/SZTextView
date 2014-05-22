@@ -58,6 +58,10 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
     }
+    
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+        self._placeholderTextView.textContainerInset = self.textContainerInset;
+    }
 
     if (_placeholder) {
         self._placeholderTextView.text = _placeholder;
