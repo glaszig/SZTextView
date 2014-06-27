@@ -19,6 +19,7 @@ static NSString * const kPlaceholderKey = @"placeholder";
 static NSString * const kFontKey = @"font";
 static NSString * const kTextKey = @"text";
 static NSString * const kExclusionPathsKey = @"exclusionPaths";
+static NSString * const kLineFragmentPaddingKey = @"lineFragmentPadding";
 static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 @implementation SZTextView
@@ -58,6 +59,10 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
     }
+
+	if (HAS_TEXT_CONTAINER) {
+		self._placeholderTextView.textContainer.lineFragmentPadding = self.textContainer.lineFragmentPadding;
+	}
     
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
         self._placeholderTextView.textContainerInset = self.textContainerInset;
@@ -89,11 +94,15 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
                                 options:NSKeyValueObservingOptionNew context:nil];
     }
 
-    if (HAS_TEXT_CONTAINER_INSETS(self)) {
+	if (HAS_TEXT_CONTAINER) {
+        [self.textContainer addObserver:self forKeyPath:kLineFragmentPaddingKey
+                                options:NSKeyValueObservingOptionNew context:nil];
+    }
+
+	if (HAS_TEXT_CONTAINER_INSETS(self)) {
         [self addObserver:self forKeyPath:kTextContainerInsetKey
                   options:NSKeyValueObservingOptionNew context:nil];
     }
-
 }
 
 - (void)setPlaceholder:(NSString *)placeholderText
@@ -133,6 +142,9 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         }
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
+        [self resizePlaceholderFrame];
+    } else if ([keyPath isEqualToString:kLineFragmentPaddingKey]) {
+        self._placeholderTextView.textContainer.lineFragmentPadding = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
         [self resizePlaceholderFrame];
     } else if ([keyPath isEqualToString:kTextContainerInsetKey]) {
         NSValue *value = [change objectForKey:NSKeyValueChangeNewKey];
