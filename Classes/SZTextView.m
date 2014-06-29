@@ -58,9 +58,9 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
     if (HAS_TEXT_CONTAINER) {
         self._placeholderTextView.textContainer.exclusionPaths = self.textContainer.exclusionPaths;
-		self._placeholderTextView.textContainer.lineFragmentPadding = self.textContainer.lineFragmentPadding;
-	}
-    
+        self._placeholderTextView.textContainer.lineFragmentPadding = self.textContainer.lineFragmentPadding;
+    }
+
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
         self._placeholderTextView.textContainerInset = self.textContainerInset;
     }
@@ -93,7 +93,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
                                 options:NSKeyValueObservingOptionNew context:nil];
     }
 
-	if (HAS_TEXT_CONTAINER_INSETS(self)) {
+    if (HAS_TEXT_CONTAINER_INSETS(self)) {
         [self addObserver:self forKeyPath:kTextContainerInsetKey
                   options:NSKeyValueObservingOptionNew context:nil];
     }
@@ -177,7 +177,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer removeObserver:self forKeyPath:kExclusionPathsKey];
-		[self.textContainer removeObserver:self forKeyPath:kLineFragmentPaddingKey];
+        [self.textContainer removeObserver:self forKeyPath:kLineFragmentPaddingKey];
     }
 
     if (HAS_TEXT_CONTAINER_INSETS(self)) {
@@ -186,4 +186,3 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 }
 
 @end
-
