@@ -11,7 +11,7 @@
 #define HAS_TEXT_CONTAINER [self respondsToSelector:@selector(textContainer)]
 #define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
 
-@interface SZTextView ()
+@interface SZTextView () <UITextViewDelegate>
 @property (strong, nonatomic) UITextView *_placeholderTextView;
 @end
 
@@ -50,6 +50,17 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
+    
+    //-------added by ysc-------
+	self.maxLength = -1;    //default is no limit
+	self.delegate = self;
+	if ([self.text length] > 0) {
+		self._placeholderTextView.hidden = YES;
+	}
+	else {
+		self._placeholderTextView.hidden = NO;
+	}
+	//------------END------------
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
@@ -127,9 +138,9 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
         if (newText.length > 0) {
-            [self._placeholderTextView removeFromSuperview];
+            self._placeholderTextView.hidden = YES;
         } else {
-            [self addSubview:self._placeholderTextView];
+            self._placeholderTextView.hidden = NO;
         }
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
@@ -155,12 +166,28 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 - (void)textDidChange:(NSNotification *)aNotification
 {
     if (self.text.length < 1) {
-        [self addSubview:self._placeholderTextView];
         [self sendSubviewToBack:self._placeholderTextView];
+        self._placeholderTextView.hidden = NO;
     } else {
-        [self._placeholderTextView removeFromSuperview];
+        self._placeholderTextView.hidden = YES;
     }
 }
+
+//------added by ysc-----
+- (BOOL)textView:(UITextView *)txtView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    if (self.maxLength > 0) {
+        if ([text isEqualToString:@"\n"]) {
+            [txtView resignFirstResponder];
+            return NO;
+        }
+        
+        NSMutableString *newText = [txtView.text mutableCopy];
+        [newText replaceCharactersInRange:range withString:text];
+        return [newText length] <= self.maxLength;
+    }
+    return YES;
+}
+//------END-------------
 
 - (void)dealloc
 {
