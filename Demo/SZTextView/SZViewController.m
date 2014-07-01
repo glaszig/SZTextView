@@ -30,6 +30,7 @@
 
     self.textView.placeholder = @"Enter lorem ipsum here weofi ahöslfawoeö color. Dolor sit amet multiple.";
     self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+    self.textView.maxLength = 20;
 }
 
 - (void)didReceiveMemoryWarning
