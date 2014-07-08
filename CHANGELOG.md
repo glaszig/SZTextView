@@ -1,5 +1,11 @@
 # Changelog
 
+**1.1.2**
+
+ - Properly hiding the placeholder view if it awakes from nib and the text property is not empty -- #12 [@yangshengchaoios]
+ - Keeping the text container's `lineFragmentPadding` in sync -- #11 [@benlachman]
+ - Keeping track of `textContainerInset` upon `-awakeFromNib` -- #10 [@vlas-voloshin]
+
 **1.1.1**
 
  - Using `[UIColor lightGrayColor]` as default placeholder text color -- #8
