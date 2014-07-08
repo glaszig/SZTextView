@@ -69,8 +69,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         self._placeholderTextView.text = _placeholder;
     }
 
-    [self addSubview:self._placeholderTextView];
-    [self sendSubviewToBack:self._placeholderTextView];
+    [self togglePlaceholderViewForText:self.text];
+
     self.clipsToBounds = YES;
 
     // some observations
@@ -129,11 +129,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
-        if (newText.length > 0) {
-            [self._placeholderTextView removeFromSuperview];
-        } else {
-            [self addSubview:self._placeholderTextView];
-        }
+        [self togglePlaceholderViewForText:newText];
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
@@ -160,7 +156,12 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
-    if (self.text.length < 1) {
+    [self togglePlaceholderViewForText:self.text];
+}
+
+- (void)togglePlaceholderViewForText:(NSString *)text
+{
+    if (text.length < 1) {
         [self addSubview:self._placeholderTextView];
         [self sendSubviewToBack:self._placeholderTextView];
     } else {
