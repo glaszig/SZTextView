@@ -1,6 +1,6 @@
 # SZTextView 
 
-[![Build Status](https://travis-ci.org/glaszig/SZTextView.png?branch=master)](https://travis-ci.org/glaszig/SZTextView)
+[![Build Status](https://travis-ci.org/glaszig/SZTextView.svg?branch=master)](https://travis-ci.org/glaszig/SZTextView)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/glaszig/sztextview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 
 A drop-in UITextView replacement which gives you: a placeholder.  
