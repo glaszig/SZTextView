@@ -8,22 +8,21 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 ## Requirements
 
-Your iOS project. (Tested on iOS versions 5.0, 6.1 and 7.0)
+Your iOS project. (Tested on iOS versions 5.0, 6.1, 7.0 and 7.1)
 
 > **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.
 
 ## Installation
 
-The easiest way would be to clone this repo and add the project to your Xcode workspace.  
-Or use [CocoaPods](http://cocoapods.org).
+Either clone this repo and add the project to your Xcode workspace or use [CocoaPods](http://cocoapods.org).
 
 ## Usage
 
 ```objc
 SZTextView *textView = [SZTextView new];
-self.textView.placeholder = @"Enter lorem ipsum here";
-self.textView.placeholderTextColor = [UIColor lightGrayColor];
-self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
+textView.placeholder = @"Enter lorem ipsum here";
+textView.placeholderTextColor = [UIColor lightGrayColor];
+textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 ```
 
 A simple demo is included.
