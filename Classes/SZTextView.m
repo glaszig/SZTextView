@@ -120,7 +120,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholderText {
     _placeholder = attributedPlaceholderText.string;
     _attributedPlaceholder = attributedPlaceholderText;
-	
+    
     [self resizePlaceholderFrame];
 }
 
@@ -137,8 +137,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.frame = frame;
 }
 
-- (void)showPlaceholderForString:(NSString *)textString {
-	if (textString.length < 1) {
+- (void)setPlaceholderVisibleForText:(NSString *)textString {
+    if (textString.length < 1) {
         [self addSubview:self._placeholderTextView];
         [self sendSubviewToBack:self._placeholderTextView];
     } else {
@@ -161,7 +161,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
  
-		[self showPlaceholderForString:newText];
+        [self setPlaceholderVisibleForText:newText];
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
@@ -188,13 +188,13 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
-	[self showPlaceholderForString:self.text];
+    [self setPlaceholderVisibleForText:self.text];
 }
 
 - (BOOL)becomeFirstResponder {
-	[self showPlaceholderForString:self.text];
-	
-	return [super becomeFirstResponder];
+    [self setPlaceholderVisibleForText:self.text];
+
+    return [super becomeFirstResponder];
 }
 
 - (void)dealloc
