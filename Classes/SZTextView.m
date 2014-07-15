@@ -18,6 +18,7 @@
 static NSString * const kAttributedPlaceholderKey = @"attributedPlaceholder";
 static NSString * const kPlaceholderKey = @"placeholder";
 static NSString * const kFontKey = @"font";
+static NSString * const kAttributedTextKey = @"attributedText";
 static NSString * const kTextKey = @"text";
 static NSString * const kExclusionPathsKey = @"exclusionPaths";
 static NSString * const kLineFragmentPaddingKey = @"lineFragmentPadding";
@@ -88,6 +89,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kFontKey
               options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kAttributedTextKey
+              options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
               options:NSKeyValueObservingOptionNew context:nil];
 
@@ -149,6 +152,11 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     else if ([keyPath isEqualToString:kFontKey]) {
         self._placeholderTextView.font = [change valueForKey:NSKeyValueChangeNewKey];
     }
+    else if ([keyPath isEqualToString:kAttributedTextKey]) {
+        NSAttributedString *newAttributedText = [change valueForKey:NSKeyValueChangeNewKey];
+        
+        [self togglePlaceholderViewForText:newAttributedText.string];
+    }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
  
@@ -204,6 +212,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     [self removeObserver:self forKeyPath:kAttributedPlaceholderKey];
     [self removeObserver:self forKeyPath:kPlaceholderKey];
     [self removeObserver:self forKeyPath:kFontKey];
+    [self removeObserver:self forKeyPath:kAttributedTextKey];
     [self removeObserver:self forKeyPath:kTextKey];
 
     if (HAS_TEXT_CONTAINER) {
