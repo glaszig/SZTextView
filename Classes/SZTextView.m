@@ -82,9 +82,9 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     [defaultCenter addObserver:self selector:@selector(textDidChange:)
                           name:UITextViewTextDidChangeNotification object:self];
 
-    [self addObserver:self forKeyPath:kPlaceholderKey
-              options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kAttributedPlaceholderKey
+              options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kPlaceholderKey
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kFontKey
               options:NSKeyValueObservingOptionNew context:nil];
@@ -107,13 +107,13 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 - (void)setPlaceholder:(NSString *)placeholderText
 {
     _placeholder = placeholderText;
-    
-	if( self.attributedPlaceholder.length ) {
-		_attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholderText attributes:[self.attributedPlaceholder attributesAtIndex:0 effectiveRange:nil]];
-	} else {
-		_attributedPlaceholder = nil;
-	}
-	
+
+    if( self.attributedPlaceholder.length ) {
+        _attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholderText attributes:[self.attributedPlaceholder attributesAtIndex:0 effectiveRange:nil]];
+    } else {
+        _attributedPlaceholder = nil;
+    }
+
     [self resizePlaceholderFrame];
 }
 
