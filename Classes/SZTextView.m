@@ -137,15 +137,6 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.frame = frame;
 }
 
-- (void)setPlaceholderVisibleForText:(NSString *)textString {
-    if (textString.length < 1) {
-        [self addSubview:self._placeholderTextView];
-        [self sendSubviewToBack:self._placeholderTextView];
-    } else {
-        [self._placeholderTextView removeFromSuperview];
-    }
-}
-
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
 {
