@@ -57,4 +57,26 @@
     
 }
 
+- (void)testAttributedPlaceholderText
+{
+    NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:@"SZTextView"];
+    [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,2)];
+    [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(2,4)];
+    [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(6,4)];
+
+    textView.attributedPlaceholder = placeholder;
+    STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should return a non-attributed copy of -attributedPlacholder");
+
+    textView.placeholder = @"AnotherPlaceholder";
+    STAssertEqualObjects(textView.attributedPlaceholder.string, @"AnotherPlaceholder", @"setting a non-attributed placeholder after setting an attributed placholder should copy the text");
+}
+
+- (void)testNonAttributedPlaceholderText
+{
+    textView.placeholder = @"SZTextView";
+
+    STAssertNil(textView.attributedPlaceholder, @"-attributedPlaceholder should be nil");
+    STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should be set");
+}
+
 @end
