@@ -73,7 +73,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         self._placeholderTextView.text = _placeholder;
     }
 
-    [self togglePlaceholderViewForText:self.text];
+    [self setPlaceholderVisibleForText:self.text];
 
     self.clipsToBounds = YES;
 
@@ -155,12 +155,12 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     else if ([keyPath isEqualToString:kAttributedTextKey]) {
         NSAttributedString *newAttributedText = [change valueForKey:NSKeyValueChangeNewKey];
         
-        [self togglePlaceholderViewForText:newAttributedText.string];
+        [self setPlaceholderVisibleForText:newAttributedText.string];
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
  
-        [self togglePlaceholderViewForText:newText];
+        [self setPlaceholderVisibleForText:newText];
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
@@ -187,16 +187,16 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 - (void)textDidChange:(NSNotification *)aNotification
 {
-    [self togglePlaceholderViewForText:self.text];
+    [self setPlaceholderVisibleForText:self.text];
 }
 
 - (BOOL)becomeFirstResponder {
-    [self togglePlaceholderViewForText:self.text];
+    [self setPlaceholderVisibleForText:self.text];
 
     return [super becomeFirstResponder];
 }
 
-- (void)togglePlaceholderViewForText:(NSString *)text
+- (void)setPlaceholderVisibleForText:(NSString *)text
 {
     if (text.length < 1) {
         [self addSubview:self._placeholderTextView];
