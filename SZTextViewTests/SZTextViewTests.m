@@ -32,8 +32,10 @@
     [super tearDown];
 }
 
-- (void)testPlaceholderTextViewSuperViewAfterInit
+- (void)testPlaceholderTextViewSuperViewUponBecomingFirstResponder
 {
+    [textView becomeFirstResponder];
+
     STAssertNotNil(placeholderTextView.superview, @"should initially have a superview");
     STAssertEqualObjects(placeholderTextView.superview, textView, @"placeholder superview should be the text view itself");
 }
