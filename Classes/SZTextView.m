@@ -67,7 +67,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         self._placeholderTextView.textContainerInset = self.textContainerInset;
     }
 
-    if (_attributedPlaceholder ) {
+    if (_attributedPlaceholder) {
         self._placeholderTextView.attributedText = _attributedPlaceholder;
     } else if (_placeholder) {
         self._placeholderTextView.text = _placeholder;
@@ -108,7 +108,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 {
     _placeholder = placeholderText;
 
-    if( self.attributedPlaceholder.length ) {
+    if (self.attributedPlaceholder.length) {
         _attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholderText attributes:[self.attributedPlaceholder attributesAtIndex:0 effectiveRange:nil]];
     } else {
         _attributedPlaceholder = nil;
