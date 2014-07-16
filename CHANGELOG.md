@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.3**
+
+ - Support `attributedPlaceholder` for fancy placeholder texts -- #13 [@benlachman]
+
 **1.1.2**
 
  - Properly hiding the placeholder view if it awakes from nib and the text property is not empty -- #12 [@yangshengchaoios]

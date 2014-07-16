@@ -25,7 +25,22 @@ textView.placeholderTextColor = [UIColor lightGrayColor];
 textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 ```
 
-A simple demo is included.
+Analogously you can use the `attributedPlaceholder` property to set a fancy `NSAttributedString` as the placeholder:
+
+```objc
+NSMutableAttributedString *placeholder = [[NSMutableAttributedString alloc] initWithString:@"Enter lorem ipsum here"];
+[placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(0,2)];
+[placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor greenColor] range:NSMakeRange(2,4)];
+[placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(6,4)];
+
+textView.attributedPlaceholder = placeholder;
+```
+
+Both properties `placeholder` and `attributedPlaceholder` are made to stay in sync.
+If you set an `attributedPlaceholder` and afterwards set `placeholder` to something else, the set text gets copied to the `attributedPlaceholder` while trying to keep the original text attributes.  
+Also, `placeholder` will be set to `attributedPlaceholder.string` when using the `attributedPlaceholder` setter.
+
+A simple demo and a few unit tests are included.
 
 ## Contributing
 
