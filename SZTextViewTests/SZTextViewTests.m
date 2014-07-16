@@ -65,6 +65,7 @@
     [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(6,4)];
 
     textView.attributedPlaceholder = placeholder;
+    STAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder string should be set");
     STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should return a non-attributed copy of -attributedPlacholder");
 
     textView.placeholder = @"AnotherPlaceholder";
@@ -75,8 +76,8 @@
 {
     textView.placeholder = @"SZTextView";
 
-    STAssertNil(textView.attributedPlaceholder, @"-attributedPlaceholder should be nil");
     STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should be set");
+    STAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder should equal -placeholder");
 }
 
 @end

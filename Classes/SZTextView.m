@@ -107,13 +107,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 - (void)setPlaceholder:(NSString *)placeholderText
 {
     _placeholder = placeholderText;
-
-    if (self.attributedPlaceholder.length) {
-        NSDictionary *textAttributes = [self.attributedPlaceholder attributesAtIndex:0 effectiveRange:nil];
-        _attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholderText attributes:textAttributes];
-    } else {
-        _attributedPlaceholder = nil;
-    }
+    _attributedPlaceholder = [[NSAttributedString alloc] initWithString:placeholderText];
 
     [self resizePlaceholderFrame];
 }
