@@ -76,8 +76,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self.clipsToBounds = YES;
 
     // some observations
-    NSNotificationCenter *defaultCenter;
-    defaultCenter = [NSNotificationCenter defaultCenter];
+    NSNotificationCenter *defaultCenter = [NSNotificationCenter defaultCenter];
     [defaultCenter addObserver:self selector:@selector(textDidChange:)
                           name:UITextViewTextDidChangeNotification object:self];
 
