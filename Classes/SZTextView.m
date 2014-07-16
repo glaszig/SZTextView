@@ -120,7 +120,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 - (void)setAttributedPlaceholder:(NSAttributedString *)attributedPlaceholderText {
     _placeholder = attributedPlaceholderText.string;
     _attributedPlaceholder = attributedPlaceholderText;
-    
+
     [self resizePlaceholderFrame];
 }
 
@@ -151,12 +151,12 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     }
     else if ([keyPath isEqualToString:kAttributedTextKey]) {
         NSAttributedString *newAttributedText = [change valueForKey:NSKeyValueChangeNewKey];
-        
+
         [self setPlaceholderVisibleForText:newAttributedText.string];
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
- 
+
         [self setPlaceholderVisibleForText:newText];
     } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
