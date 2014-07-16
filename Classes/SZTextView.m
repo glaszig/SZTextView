@@ -152,23 +152,25 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     }
     else if ([keyPath isEqualToString:kAttributedTextKey]) {
         NSAttributedString *newAttributedText = [change valueForKey:NSKeyValueChangeNewKey];
-
         [self setPlaceholderVisibleForText:newAttributedText.string];
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
-
         [self setPlaceholderVisibleForText:newText];
-    } else if ([keyPath isEqualToString:kExclusionPathsKey]) {
+    }
+    else if ([keyPath isEqualToString:kExclusionPathsKey]) {
         self._placeholderTextView.textContainer.exclusionPaths = [change objectForKey:NSKeyValueChangeNewKey];
         [self resizePlaceholderFrame];
-    } else if ([keyPath isEqualToString:kLineFragmentPaddingKey]) {
+    }
+    else if ([keyPath isEqualToString:kLineFragmentPaddingKey]) {
         self._placeholderTextView.textContainer.lineFragmentPadding = [[change objectForKey:NSKeyValueChangeNewKey] floatValue];
         [self resizePlaceholderFrame];
-    } else if ([keyPath isEqualToString:kTextContainerInsetKey]) {
+    }
+    else if ([keyPath isEqualToString:kTextContainerInsetKey]) {
         NSValue *value = [change objectForKey:NSKeyValueChangeNewKey];
         self._placeholderTextView.textContainerInset = value.UIEdgeInsetsValue;
-    } else {
+    }
+    else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
 }
