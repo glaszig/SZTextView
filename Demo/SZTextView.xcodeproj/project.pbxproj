@@ -96,6 +96,7 @@
 				5B8D20B816F1717100D92F51 /* Products */,
 			);
 			sourceTree = "<group>";
+			usesTabs = 0;
 		};
 		5B8D20B816F1717100D92F51 /* Products */ = {
 			isa = PBXGroup;
