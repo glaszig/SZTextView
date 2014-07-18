@@ -10,7 +10,7 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 Your iOS project. (Tested on iOS versions 5.0, 6.1, 7.0 and 7.1)
 
-> **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.
+> **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.  
 > **Note**: To run the tests you'll need Xcode 5 with XCTest.
 
 ## Installation
