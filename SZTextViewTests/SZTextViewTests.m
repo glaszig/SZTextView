@@ -36,24 +36,24 @@
 {
     [textView becomeFirstResponder];
 
-    STAssertNotNil(placeholderTextView.superview, @"should initially have a superview");
-    STAssertEqualObjects(placeholderTextView.superview, textView, @"placeholder superview should be the text view itself");
+    XCTAssertNotNil(placeholderTextView.superview, @"should initially have a superview");
+    XCTAssertEqualObjects(placeholderTextView.superview, textView, @"placeholder superview should be the text view itself");
 }
 
 - (void)testPlaceholderTextViewChangeSuperviewAfterSetText
 {
     textView.text = @"Foobar";
-    STAssertNil(placeholderTextView.superview, @"Placeholder should not have a superview if the containing text view has input");
+    XCTAssertNil(placeholderTextView.superview, @"Placeholder should not have a superview if the containing text view has input");
 
     textView.text = nil;
     NSLog(@"superview: %@", placeholderTextView.superview);
-    STAssertNotNil(placeholderTextView.superview, @"Placeholder should have a superview if the containing text view has no input");
+    XCTAssertNotNil(placeholderTextView.superview, @"Placeholder should have a superview if the containing text view has no input");
 }
 
 - (void)testPlaceholderTextViewShouldInheritFont
 {
     textView.font = [UIFont systemFontOfSize:20.0];
-    STAssertEqualObjects(placeholderTextView.font, textView.font, @"label and text view should have equal fonts");
+    XCTAssertEqualObjects(placeholderTextView.font, textView.font, @"label and text view should have equal fonts");
     
 }
 
@@ -65,19 +65,19 @@
     [placeholder addAttribute:NSForegroundColorAttributeName value:[UIColor blueColor] range:NSMakeRange(6,4)];
 
     textView.attributedPlaceholder = placeholder;
-    STAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder string should be set");
-    STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should return a non-attributed copy of -attributedPlacholder");
+    XCTAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder string should be set");
+    XCTAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should return a non-attributed copy of -attributedPlacholder");
 
     textView.placeholder = @"AnotherPlaceholder";
-    STAssertEqualObjects(textView.attributedPlaceholder.string, @"AnotherPlaceholder", @"setting a non-attributed placeholder after setting an attributed placholder should copy the text");
+    XCTAssertEqualObjects(textView.attributedPlaceholder.string, @"AnotherPlaceholder", @"setting a non-attributed placeholder after setting an attributed placholder should copy the text");
 }
 
 - (void)testNonAttributedPlaceholderText
 {
     textView.placeholder = @"SZTextView";
 
-    STAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should be set");
-    STAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder should equal -placeholder");
+    XCTAssertEqualObjects(textView.placeholder, @"SZTextView", @"-placeholder should be set");
+    XCTAssertEqualObjects(textView.attributedPlaceholder.string, @"SZTextView", @"-attributedPlaceholder should equal -placeholder");
 }
 
 @end

@@ -6,8 +6,8 @@
 //  Copyright (c) 2013 glaszig. All rights reserved.
 //
 
-#import <SenTestingKit/SenTestingKit.h>
+#import <XCTest/XCTest.h>
 
-@interface SZTextViewTests : SenTestCase
+@interface SZTextViewTests : XCTestCase
 
 @end
