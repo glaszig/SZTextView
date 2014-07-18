@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.4**
+
+ - Fixing issue with the placeholder only appearing when the text view is tapped/focussed (e.g. becomes the first responder) -- #14 [@SellJamHere]
+
 **1.1.3**
 
  - Support `attributedPlaceholder` for fancy placeholder texts -- #13 [@benlachman]
