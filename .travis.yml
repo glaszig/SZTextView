@@ -1,3 +1,13 @@
 language: objective-c
-before_script: cd Demo
-script: make build-demo
+before_install:
+  - brew update
+  - which ios-sim || brew install ios-sim
+env:
+  global:
+    - ONLY_ACTIVE_ARCH=NO
+  matrix:
+    - IOS_VERSION=6.1
+    - IOS_VERSION=7.0
+    - IOS_VERSION=7.1
+script:
+  - xcodebuild -project Demo/SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone Retina (4-inch),OS=$IOS_VERSION" clean test
