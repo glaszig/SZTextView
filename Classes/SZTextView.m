@@ -73,6 +73,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         self._placeholderTextView.text = _placeholder;
     }
 
+    [self setPlaceholderVisibleForText:self.text];
+
     self.clipsToBounds = YES;
 
     // some observations
