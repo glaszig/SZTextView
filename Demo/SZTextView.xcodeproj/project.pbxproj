@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4B737CB6197B1A67006F3493 /* SZTextViewStoryboardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 4B737CB5197B1A67006F3493 /* SZTextViewStoryboardTests.m */; };
 		5B8D20BB16F1717100D92F51 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D20BA16F1717100D92F51 /* UIKit.framework */; };
 		5B8D20BD16F1717100D92F51 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D20BC16F1717100D92F51 /* Foundation.framework */; };
 		5B8D20BF16F1717100D92F51 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B8D20BE16F1717100D92F51 /* CoreGraphics.framework */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4B737CB5197B1A67006F3493 /* SZTextViewStoryboardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextViewStoryboardTests.m; sourceTree = "<group>"; };
 		5B8D20B716F1717100D92F51 /* SZTextView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SZTextView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8D20BA16F1717100D92F51 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5B8D20BC16F1717100D92F51 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -148,6 +150,7 @@
 			children = (
 				5B8D20EA16F1717200D92F51 /* SZTextViewTests.h */,
 				5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */,
+				4B737CB5197B1A67006F3493 /* SZTextViewStoryboardTests.m */,
 				5B8D20E516F1717200D92F51 /* Supporting Files */,
 			);
 			name = SZTextViewTests;
@@ -287,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5B8D20EC16F1717200D92F51 /* SZTextViewTests.m in Sources */,
+				4B737CB6197B1A67006F3493 /* SZTextViewStoryboardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,11 +14,8 @@
 
 @implementation SZViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-
-    [[SZTextView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
 
     CGFloat inset = 15.0;
     // ios 7
@@ -27,19 +24,6 @@
     } else {
         self.textView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset);
     }
-
-    self.textView.placeholder = @"Enter lorem ipsum here weofi ahöslfawoeö color. Dolor sit amet multiple.";
-    self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-- (void)textViewDidChange:(UITextView *)textView
-{
-//    [textView resignFirstResponder];
-}
 @end
