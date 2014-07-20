@@ -18,8 +18,6 @@
 {
     [super viewDidLoad];
 
-    [[SZTextView appearance] setPlaceholderTextColor:[UIColor lightGrayColor]];
-
     CGFloat inset = 15.0;
     // ios 7
     if ([UITextView instancesRespondToSelector:@selector(setTextContainerInset:)]) {
@@ -27,9 +25,6 @@
     } else {
         self.textView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset);
     }
-
-    self.textView.placeholder = @"Enter lorem ipsum here weofi ahöslfawoeö color. Dolor sit amet multiple.";
-    self.textView.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18.0];
 }
 
 - (void)didReceiveMemoryWarning
@@ -42,4 +37,5 @@
 {
 //    [textView resignFirstResponder];
 }
+
 @end

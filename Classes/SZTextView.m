@@ -26,17 +26,27 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
 
 @implementation SZTextView
 
-- (id)initWithFrame:(CGRect)frame
+- (instancetype)initWithCoder:(NSCoder *)coder
 {
-    self = [super initWithFrame:frame];
+    self = [super initWithCoder:coder];
     if (self) {
-        [self awakeFromNib];
+        [self preparePlaceholder];
     }
     return self;
 }
 
-- (void)awakeFromNib
+- (id)initWithFrame:(CGRect)frame
 {
+    self = [super initWithFrame:frame];
+    if (self) {
+        [self preparePlaceholder];
+    }
+    return self;
+}
+
+- (void)preparePlaceholder
+{
+    NSAssert(!self._placeholderTextView, @"placeholder has been prepared already: %@", self._placeholderTextView);
     // the label which displays the placeholder
     // needs to inherit some properties from its parent text view
 
