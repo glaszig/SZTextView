@@ -10,9 +10,7 @@
 #import "SZTextView.h"
 
 @interface SZTextViewStoryboardTests : XCTestCase
-@end
-
-@interface SZTextViewStoryboardTests () {
+{
     SZTextView *textView;
     UITextView *placeholderTextView;
 }
