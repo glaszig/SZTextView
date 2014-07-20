@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.5**
+
+ - Properly allow usage of User Defined Runtime Attributes in Interface Builder -- #15 [@paulz]
+
 **1.1.4**
 
  - Fixing issue with the placeholder only appearing when the text view is tapped/focussed (e.g. becomes the first responder) -- #14 [@SellJamHere]
