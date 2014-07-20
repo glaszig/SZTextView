@@ -197,7 +197,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     [self setPlaceholderVisibleForText:self.text];
 }
 
-- (BOOL)becomeFirstResponder {
+- (BOOL)becomeFirstResponder
+{
     [self setPlaceholderVisibleForText:self.text];
 
     return [super becomeFirstResponder];
