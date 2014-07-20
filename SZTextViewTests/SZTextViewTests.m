@@ -6,14 +6,14 @@
 //  Copyright (c) 2013 glaszig. All rights reserved.
 //
 
-#import "SZTextViewTests.h"
+#import <XCTest/XCTest.h>
 #import "SZTextView.h"
 
-@interface SZTextViewTests () {
+@interface SZTextViewTests : XCTestCase
+{
     SZTextView *textView;
     UITextView *placeholderTextView;
 }
-
 @end
 
 @implementation SZTextViewTests

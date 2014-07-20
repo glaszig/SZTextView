@@ -57,7 +57,6 @@
 		5B8D20DD16F1717200D92F51 /* SZTextViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZTextViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B8D20E616F1717200D92F51 /* SZTextViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SZTextViewTests-Info.plist"; sourceTree = "<group>"; };
 		5B8D20E816F1717200D92F51 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		5B8D20EA16F1717200D92F51 /* SZTextViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.objj.h; name = SZTextViewTests.h; path = ../SZTextViewTests/SZTextViewTests.h; sourceTree = "<group>"; };
 		5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SZTextViewTests.m; path = ../SZTextViewTests/SZTextViewTests.m; sourceTree = "<group>"; };
 		5B8D20F516F171FC00D92F51 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; name = SZTextView.h; path = ../../Classes/SZTextView.h; sourceTree = "<group>"; };
 		5B8D20F616F171FC00D92F51 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = ../../Classes/SZTextView.m; sourceTree = "<group>"; };
@@ -148,7 +147,6 @@
 		5B8D20E416F1717200D92F51 /* SZTextViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				5B8D20EA16F1717200D92F51 /* SZTextViewTests.h */,
 				5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */,
 				4B737CB5197B1A67006F3493 /* SZTextViewStoryboardTests.m */,
 				5B8D20E516F1717200D92F51 /* Supporting Files */,
