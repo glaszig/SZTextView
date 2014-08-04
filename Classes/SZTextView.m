@@ -63,6 +63,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
+    self._placeholderTextView.contentOffset = self.contentOffset;
+    self._placeholderTextView.contentInset = self.contentInset;
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
@@ -130,6 +132,16 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     _attributedPlaceholder = attributedPlaceholderText;
 
     [self resizePlaceholderFrame];
+}
+
+- (void)setContentInset:(UIEdgeInsets)contentInset{
+    [super setContentInset:contentInset];
+    self._placeholderTextView.contentInset = contentInset;
+}
+
+-(void)setContentOffset:(CGPoint)contentOffset{
+    [super setContentOffset:contentOffset];
+    self._placeholderTextView.contentOffset = contentOffset;
 }
 
 - (void)layoutSubviews
