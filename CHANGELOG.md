@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.6**
+
+ - Sync text view's and placeholder's `contentInset` and `contentOffset` -- #16 [@RyanBertrand]
+
 **1.1.5**
 
  - Properly allow usage of User Defined Runtime Attributes in Interface Builder -- #15 [@paulz]
