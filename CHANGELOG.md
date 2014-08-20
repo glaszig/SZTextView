@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.7**
+
+ - Actually copying properties in setters instead of just assigning them -- #17 [@xuki]
+
 **1.1.6**
 
  - Sync text view's and placeholder's `contentInset` and `contentOffset` -- #16 [@RyanBertrand]
