@@ -72,6 +72,29 @@
     XCTAssertEqualObjects(textView.attributedPlaceholder.string, @"AnotherPlaceholder", @"setting a non-attributed placeholder after setting an attributed placholder should copy the text");
 }
 
+- (void)testCopiesAttributedPlaceholder
+{
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:@"SZTextView"
+                                                                                      attributes:attributes];
+
+    textView.attributedPlaceholder = mutableString;
+    [mutableString setAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}
+                           range:NSMakeRange(0, mutableString.length)];
+
+    XCTAssertFalse([textView.attributedPlaceholder isEqualToAttributedString:mutableString], @"attributed placeholder should get copied");
+}
+
+- (void)testCopiesPlaceholder
+{
+    NSMutableString *mutableString = [@"SZTextView" mutableCopy];
+    textView.placeholder = mutableString;
+
+    [mutableString appendString:@"mutated"];
+
+    XCTAssertEqualObjects(textView.placeholder, @"SZTextView");
+}
+
 - (void)testNonAttributedPlaceholderText
 {
     textView.placeholder = @"SZTextView";
