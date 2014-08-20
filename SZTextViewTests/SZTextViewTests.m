@@ -85,6 +85,16 @@
     XCTAssertFalse([textView.attributedPlaceholder isEqualToAttributedString:mutableString], @"attributed placeholder should get copied");
 }
 
+- (void)testCopiesPlaceholder
+{
+    NSMutableString *mutableString = [@"SZTextView" mutableCopy];
+    textView.placeholder = mutableString;
+
+    [mutableString appendString:@"mutated"];
+
+    XCTAssertEqualObjects(textView.placeholder, @"SZTextView");
+}
+
 - (void)testNonAttributedPlaceholderText
 {
     textView.placeholder = @"SZTextView";
