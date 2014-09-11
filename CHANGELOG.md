@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.8**
+
+ - Syncing `textAlignment` property -- #18 [@arturgrigor]
+
 **1.1.7**
 
  - Actually copying properties in setters instead of just assigning them -- #17 [@xuki]

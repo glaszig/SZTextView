@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name           = 'SZTextView'
-  s.version        = '1.1.7'
+  s.version        = '1.1.8'
   s.summary        = 'A drop-in UITextView replacement which gives you a placeholder.'
   s.homepage       = 'https://github.com/glaszig/SZTextView'
   s.license        = 'MIT'
