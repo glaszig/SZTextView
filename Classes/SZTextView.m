@@ -23,6 +23,7 @@ static NSString * const kTextKey = @"text";
 static NSString * const kExclusionPathsKey = @"exclusionPaths";
 static NSString * const kLineFragmentPaddingKey = @"lineFragmentPadding";
 static NSString * const kTextContainerInsetKey = @"textContainerInset";
+static NSString * const kTextAlignmentKey = @"textAlignment";
 
 @implementation SZTextView
 
@@ -103,6 +104,8 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     [self addObserver:self forKeyPath:kAttributedTextKey
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextKey
+              options:NSKeyValueObservingOptionNew context:nil];
+    [self addObserver:self forKeyPath:kTextAlignmentKey
               options:NSKeyValueObservingOptionNew context:nil];
 
     if (HAS_TEXT_CONTAINER) {
@@ -189,6 +192,10 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
         NSValue *value = [change objectForKey:NSKeyValueChangeNewKey];
         self._placeholderTextView.textContainerInset = value.UIEdgeInsetsValue;
     }
+    else if ([keyPath isEqualToString:kTextAlignmentKey]) {
+        NSNumber *alignment = [change objectForKey:NSKeyValueChangeNewKey];
+        self._placeholderTextView.textAlignment = alignment.intValue;
+    }
     else {
         [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
     }
@@ -234,6 +241,7 @@ static NSString * const kTextContainerInsetKey = @"textContainerInset";
     [self removeObserver:self forKeyPath:kFontKey];
     [self removeObserver:self forKeyPath:kAttributedTextKey];
     [self removeObserver:self forKeyPath:kTextKey];
+    [self removeObserver:self forKeyPath:kTextAlignmentKey];
 
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer removeObserver:self forKeyPath:kExclusionPathsKey];

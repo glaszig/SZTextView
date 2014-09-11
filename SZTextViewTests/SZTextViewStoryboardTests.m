@@ -57,4 +57,10 @@
     XCTAssertEqualObjects(textView.font, [UIFont fontWithName:@"HelveticaNeue-Light" size:18], @"should be set in storyboard");
 }
 
+- (void)testTextAlignment
+{
+    textView.textAlignment = NSTextAlignmentCenter;
+    XCTAssertEqual(placeholderTextView.textAlignment, NSTextAlignmentCenter, @"textAlignment should be in sync");
+}
+
 @end
