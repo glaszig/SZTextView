@@ -2,6 +2,7 @@ language: objective-c
 before_install:
   - brew update
   - which ios-sim || brew install ios-sim
+install: true
 env:
   global:
     - ONLY_ACTIVE_ARCH=NO
