@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.9**
+
+ - Supporting the new (iOS 7) initializer `initWithFrame:textContainer:` -- #20 [@vlas-voloshin]
+
 **1.1.8**
 
  - Syncing `textAlignment` property -- #18 [@arturgrigor]
