@@ -36,6 +36,16 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     return self;
 }
 
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+- (instancetype)initWithFrame:(CGRect)frame textContainer:(NSTextContainer *)textContainer
+{
+    self = [super initWithFrame:frame textContainer:textContainer];
+    if (self) {
+        [self preparePlaceholder];
+    }
+    return self;
+}
+#else
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -44,6 +54,7 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     }
     return self;
 }
+#endif
 
 - (void)preparePlaceholder
 {
