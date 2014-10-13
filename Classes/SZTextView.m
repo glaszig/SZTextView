@@ -148,16 +148,6 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     [self resizePlaceholderFrame];
 }
 
-- (void)setContentInset:(UIEdgeInsets)contentInset{
-    [super setContentInset:contentInset];
-    self._placeholderTextView.contentInset = contentInset;
-}
-
--(void)setContentOffset:(CGPoint)contentOffset{
-    [super setContentOffset:contentOffset];
-    self._placeholderTextView.contentOffset = contentOffset;
-}
-
 - (void)layoutSubviews
 {
     [super layoutSubviews];
