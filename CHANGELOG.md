@@ -2,7 +2,7 @@
 
 **1.1.10**
 
- - Removing sync of `contentInset` and `contentOffset` because it caused layout issues. See #21. [@pjs7678]
+ - Fixing handling of `contentInset` and `contentOffset` for text views configured in IB or setup in code. See #21. [@pjs7678]
 
 **1.1.9**
 
