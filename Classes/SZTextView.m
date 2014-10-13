@@ -75,6 +75,8 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
+    self._placeholderTextView.contentOffset = self.contentOffset;
+    self._placeholderTextView.contentInset = self.contentInset;
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
