@@ -1,5 +1,9 @@
 # Changelog
 
+**1.1.10**
+
+ - Removing sync of `contentInset` and `contentOffset` because it caused layout issues. See #21. [@pjs7678]
+
 **1.1.9**
 
  - Supporting the new (iOS 7) initializer `initWithFrame:textContainer:` -- #20 [@vlas-voloshin]
