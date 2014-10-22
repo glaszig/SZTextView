@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+IB_DESIGNABLE
+
 @interface SZTextView : UITextView
 
 @property (copy, nonatomic) IBInspectable NSString *placeholder;
