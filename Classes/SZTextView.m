@@ -73,11 +73,11 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
     self._placeholderTextView.textColor = [UIColor lightGrayColor];
-
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
     self._placeholderTextView.userInteractionEnabled = NO;
     self._placeholderTextView.isAccessibilityElement = NO;
+    [self updateAttributes];
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
@@ -119,8 +119,6 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextAlignmentKey
               options:NSKeyValueObservingOptionNew context:nil];
-    
-    [self updateAttributes];
 
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer addObserver:self forKeyPath:kExclusionPathsKey
