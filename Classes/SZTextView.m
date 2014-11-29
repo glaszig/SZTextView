@@ -56,6 +56,10 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 }
 #endif
 
+- (void)awakeFromNib {
+    [self updateAttributes];
+}
+
 - (void)preparePlaceholder
 {
     NSAssert(!self._placeholderTextView, @"placeholder has been prepared already: %@", self._placeholderTextView);
@@ -69,14 +73,11 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
     self._placeholderTextView.textColor = [UIColor lightGrayColor];
-    self._placeholderTextView.textAlignment = self.textAlignment;
+
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
     self._placeholderTextView.userInteractionEnabled = NO;
-    self._placeholderTextView.font = self.font;
     self._placeholderTextView.isAccessibilityElement = NO;
-    self._placeholderTextView.contentOffset = self.contentOffset;
-    self._placeholderTextView.contentInset = self.contentInset;
 
     if ([self._placeholderTextView respondsToSelector:@selector(setSelectable:)]) {
         self._placeholderTextView.selectable = NO;
@@ -118,6 +119,8 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
               options:NSKeyValueObservingOptionNew context:nil];
     [self addObserver:self forKeyPath:kTextAlignmentKey
               options:NSKeyValueObservingOptionNew context:nil];
+    
+    [self updateAttributes];
 
     if (HAS_TEXT_CONTAINER) {
         [self.textContainer addObserver:self forKeyPath:kExclusionPathsKey
@@ -130,6 +133,13 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
         [self addObserver:self forKeyPath:kTextContainerInsetKey
                   options:NSKeyValueObservingOptionNew context:nil];
     }
+}
+
+- (void) updateAttributes {
+    self._placeholderTextView.font = self.font;
+    self._placeholderTextView.contentOffset = self.contentOffset;
+    self._placeholderTextView.contentInset = self.contentInset;
+    self._placeholderTextView.textAlignment = self.textAlignment;
 }
 
 - (void)setPlaceholder:(NSString *)placeholderText
