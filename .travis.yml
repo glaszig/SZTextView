@@ -9,6 +9,6 @@ env:
   matrix:
     - IOS_VERSION=7.0.3
     - IOS_VERSION=7.1
-    - IOS_VERSION=8.0
+    - IOS_VERSION=8.1
 script:
   - xcodebuild -project Demo/SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s,OS=$IOS_VERSION" clean test
