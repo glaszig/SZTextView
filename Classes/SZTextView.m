@@ -175,7 +175,10 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     }
     else if ([keyPath isEqualToString:kAttributedTextKey]) {
         NSAttributedString *newAttributedText = [change valueForKey:NSKeyValueChangeNewKey];
-        [self setPlaceholderVisibleForText:newAttributedText.string];
+        if([newAttributedText isKindOfClass:[NSAttributedString class]])
+        {
+            [self setPlaceholderVisibleForText:newAttributedText.string];
+        }
     }
     else if ([keyPath isEqualToString:kTextKey]) {
         NSString *newText = [change valueForKey:NSKeyValueChangeNewKey];
