@@ -24,6 +24,7 @@
 		5B8D20E916F1717200D92F51 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5B8D20E716F1717200D92F51 /* InfoPlist.strings */; };
 		5B8D20EC16F1717200D92F51 /* SZTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */; };
 		5B8D20F816F171FC00D92F51 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B8D20F616F171FC00D92F51 /* SZTextView.m */; };
+		5B96B69C1A8A3C9D007F16BF /* SZTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B96B69B1A8A3C9D007F16BF /* SZTableViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		5B8D20EB16F1717200D92F51 /* SZTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SZTextViewTests.m; path = ../SZTextViewTests/SZTextViewTests.m; sourceTree = "<group>"; };
 		5B8D20F516F171FC00D92F51 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.objj.h; name = SZTextView.h; path = ../../Classes/SZTextView.h; sourceTree = "<group>"; };
 		5B8D20F616F171FC00D92F51 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = ../../Classes/SZTextView.m; sourceTree = "<group>"; };
+		5B96B69A1A8A3C9D007F16BF /* SZTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTableViewCell.h; sourceTree = "<group>"; };
+		5B96B69B1A8A3C9D007F16BF /* SZTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTableViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +129,8 @@
 				5B8D20C116F1717100D92F51 /* Supporting Files */,
 				5B8D20F516F171FC00D92F51 /* SZTextView.h */,
 				5B8D20F616F171FC00D92F51 /* SZTextView.m */,
+				5B96B69A1A8A3C9D007F16BF /* SZTableViewCell.h */,
+				5B96B69B1A8A3C9D007F16BF /* SZTableViewCell.m */,
 			);
 			path = SZTextView;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 				5B8D20CB16F1717100D92F51 /* SZAppDelegate.m in Sources */,
 				5B8D20D716F1717100D92F51 /* SZViewController.m in Sources */,
 				5B8D20F816F171FC00D92F51 /* SZTextView.m in Sources */,
+				5B96B69C1A8A3C9D007F16BF /* SZTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

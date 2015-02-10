@@ -7,8 +7,9 @@
 //
 
 #import "SZViewController.h"
+#import "SZTableViewCell.h"
 
-@interface SZViewController () <UITextViewDelegate>
+@interface SZViewController () <UITextViewDelegate, UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -25,6 +26,19 @@
     } else {
         self.textView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset);
     }
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"%s", __PRETTY_FUNCTION__);
+    SZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
+    cell.textView.text = @"set from table view delegate";
+    return cell;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+{
+    return 1;
 }
 
 @end

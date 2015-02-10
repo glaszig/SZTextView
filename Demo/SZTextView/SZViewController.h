@@ -11,4 +11,5 @@
 
 @interface SZViewController : UIViewController
 @property (weak, nonatomic) IBOutlet SZTextView *textView;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 @end

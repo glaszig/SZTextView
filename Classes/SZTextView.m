@@ -164,6 +164,7 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object
                         change:(NSDictionary *)change context:(void *)context
 {
+    NSLog(@"changed %@: %@", keyPath, [change valueForKey:NSKeyValueChangeNewKey]);
     if ([keyPath isEqualToString:kAttributedPlaceholderKey]) {
         self._placeholderTextView.attributedText = [change valueForKey:NSKeyValueChangeNewKey];
     }
