@@ -26,6 +26,16 @@
     } else {
         self.textView.contentInset = UIEdgeInsetsMake(inset, inset, inset, inset);
     }
+
+    self.textView.text = @"set from viewDidLoad";
+
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:@"SZTextView"
+                                                                                      attributes:attributes];
+    [mutableString setAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}
+                           range:NSMakeRange(2, mutableString.length-2)];
+
+    self.textView.attributedText = mutableString;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -33,6 +43,14 @@
     NSLog(@"%s", __PRETTY_FUNCTION__);
     SZTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TableCell" forIndexPath:indexPath];
     cell.textView.text = @"set from table view delegate";
+
+    NSDictionary *attributes = @{NSForegroundColorAttributeName: [UIColor blueColor]};
+    NSMutableAttributedString *mutableString = [[NSMutableAttributedString alloc] initWithString:@"SZTextView"
+                                                                                      attributes:attributes];
+    [mutableString setAttributes:@{NSForegroundColorAttributeName: [UIColor blackColor]}
+                           range:NSMakeRange(2, mutableString.length-2)];
+
+    cell.textView.attributedText = mutableString;
     return cell;
 }
 
