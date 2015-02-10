@@ -85,6 +85,17 @@
     XCTAssertFalse([textView.attributedPlaceholder isEqualToAttributedString:mutableString], @"attributed placeholder should get copied");
 }
 
+- (void)testAttributedTextSetterTogglesVisibility
+{
+    textView.text = @"foo";
+    textView.attributedText = [[NSAttributedString alloc] initWithString:@""];
+    XCTAssertNotNil(placeholderTextView.superview, @"placeholder text view should have superview, be visible");
+
+    textView.text = @"foo";
+    textView.attributedText = [[NSAttributedString alloc] initWithString:@"foo bar"];
+    XCTAssertNil(placeholderTextView.superview, @"placeholder text view should not have superview, be hidden");
+}
+
 - (void)testCopiesPlaceholder
 {
     NSMutableString *mutableString = [@"SZTextView" mutableCopy];
