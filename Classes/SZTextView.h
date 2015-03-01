@@ -10,7 +10,7 @@
 
 @interface SZTextView : UITextView
 
-@property (copy, nonatomic) NSString *placeholder;
+@property (copy, nonatomic) IBInspectable NSString *placeholder;
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
 @property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
