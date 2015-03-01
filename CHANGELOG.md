@@ -1,5 +1,11 @@
 # Changelog
 
+**1.2.0**
+
+ - Supporting IBInspectable for `placeholder` and IB_DESIGNABLE -- #23, #32 [@MoathOthman]
+ - Improved default placeholder color -- #30 [@erf]
+ - Properly syncing inset and offset configured in interface builder
+
 **1.1.10**
 
  - Fixing handling of `contentInset` and `contentOffset` for text views configured in IB or setup in code. See #21. [@pjs7678]
