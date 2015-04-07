@@ -1,6 +1,8 @@
 # Changelog
 
- - Support for fadding animation for placeholder [@jaropawlak]
+**1.2.1**
+
+ - Support for fadding animation for placeholder -- #34 [@jaropawlak]
 
 **1.2.0**
 

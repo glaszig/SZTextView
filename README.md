@@ -43,6 +43,11 @@ Also, `placeholder` will be set to `attributedPlaceholder.string` when using the
 
 A simple demo and a few unit tests are included.
 
+### Animation
+
+The placeholder is animatable. Just configure the `double` property `fadeTime`
+to the seconds you'd like the animation to take.
+
 ### User Defined Runtime Attributes
 
 If you prefer using Interface Builder to configure your UI, you can use UDRA's to set values for `placeholder` and `placeholderTextColor`.
