@@ -1,5 +1,7 @@
 # Changelog
 
+ - Support for fadding animation for placeholder [@jaropawlak]
+
 **1.2.0**
 
  - Supporting IBInspectable for `placeholder` and IB_DESIGNABLE -- #23, #32 [@MoathOthman]
