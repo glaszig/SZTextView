@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/glaszig/SZTextView.svg?branch=master)](https://travis-ci.org/glaszig/SZTextView)
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/glaszig/sztextview/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 A drop-in UITextView replacement which gives you: a placeholder.  
 Technically it differs from other solutions in that it tries to work like UITextField's private `_placeholderLabel` so you should not suffer ugly glitches like jumping text views or loads of custom drawing code.
@@ -15,7 +16,23 @@ Your iOS project. (Tested on iOS versions 7.x, 8.0. Should also work on 5.x and 
 
 ## Installation
 
-Either clone this repo and add the project to your Xcode workspace or use [CocoaPods](http://cocoapods.org).
+Either clone this repo and add the project to your Xcode workspace, use [CocoaPods](http://cocoapods.org) or [Carthage](https://github.com/Carthage/Carthage).
+
+#### CocoaPods
+
+Add this to you Podfile:
+
+```ruby
+	pod 'SZTextView'
+```
+
+#### Carthage
+
+Add this line to your Cartfile:
+
+```
+	github "glaszig/SZTextView"
+```
 
 ## Usage
 
