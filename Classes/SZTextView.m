@@ -254,6 +254,9 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
         }
     }
 }
+-(CGSize)intrinsicContentSize{
+    return self.text.length < 1 ? self._placeholderTextView.intrinsicContentSize : super.intrinsicContentSize;
+}
 
 - (void)dealloc
 {
