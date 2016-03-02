@@ -1,5 +1,9 @@
 # Changelog
 
+**1.2.2**
+
+ - Carthage support -- #36 [@iv-mexx]
+
 **1.2.1**
 
  - Support for fadding animation for placeholder -- #34 [@jaropawlak]
