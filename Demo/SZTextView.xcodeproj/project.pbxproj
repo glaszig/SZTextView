@@ -211,7 +211,7 @@
 			attributes = {
 				CLASSPREFIX = SZ;
 				LastTestingUpgradeCheck = 0510;
-				LastUpgradeCheck = 0460;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = glaszig;
 			};
 			buildConfigurationList = 5B8D20B216F1717100D92F51 /* Build configuration list for PBXProject "SZTextView" */;
@@ -344,6 +344,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -391,6 +392,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "SZTextView/SZTextView-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = org.glasz.SZTextView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -402,6 +404,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "SZTextView/SZTextView-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = org.glasz.SZTextView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -419,6 +422,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.glaszig.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
@@ -436,6 +440,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.glaszig.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUNDLE_LOADER)";
 			};
