@@ -11,6 +11,7 @@
 		5B65307E1AFB933B009D7775 /* SZTextViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B65307D1AFB933B009D7775 /* SZTextViewTests.m */; };
 		5B6530891AFB938A009D7775 /* SZTextView.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B6530871AFB938A009D7775 /* SZTextView.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B65308A1AFB938A009D7775 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B6530881AFB938A009D7775 /* SZTextView.m */; };
+		5DA68D371D90943000B223CA /* SZTextViewSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DA68D361D90943000B223CA /* SZTextViewSwift.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		5B6530871AFB938A009D7775 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTextView.h; path = Classes/SZTextView.h; sourceTree = SOURCE_ROOT; };
 		5B6530881AFB938A009D7775 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = Classes/SZTextView.m; sourceTree = SOURCE_ROOT; };
 		5B65308B1AFB9441009D7775 /* SZTextViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SZTextViewTests-Info.plist"; sourceTree = "<group>"; };
+		5DA68D361D90943000B223CA /* SZTextViewSwift.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SZTextViewSwift.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +77,7 @@
 			children = (
 				5B6530871AFB938A009D7775 /* SZTextView.h */,
 				5B6530881AFB938A009D7775 /* SZTextView.m */,
+				5DA68D361D90943000B223CA /* SZTextViewSwift.swift */,
 				5B65306E1AFB933B009D7775 /* Supporting Files */,
 			);
 			path = SZTextView;
@@ -161,6 +164,7 @@
 		5B6530621AFB933B009D7775 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0730;
 				LastUpgradeCheck = 0630;
 				TargetAttributes = {
 					5B65306A1AFB933B009D7775 = {
@@ -211,6 +215,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5DA68D371D90943000B223CA /* SZTextViewSwift.swift in Sources */,
 				5B65308A1AFB938A009D7775 /* SZTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -325,6 +330,7 @@
 		5B6530821AFB933B009D7775 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -334,12 +340,14 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = SZTextView;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		5B6530831AFB933B009D7775 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
