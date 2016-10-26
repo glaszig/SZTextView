@@ -8,8 +8,6 @@
 
 import Foundation
 
-//#define HAS_TEXT_CONTAINER [self respondsToSelector:@selector(textContainer)]
-//#define HAS_TEXT_CONTAINER_INSETS(x) [(x) respondsToSelector:@selector(textContainerInset)]
 
 func HAS_TEXT_CONTAINER(x: AnyObject) -> Bool {
     return x.respondsToSelector(Selector("textContainer"))
