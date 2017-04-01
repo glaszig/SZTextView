@@ -1,8 +1,14 @@
 language: objective-c
-osx_image: xcode8.3
-xcode_project: SZTextView.xcodeproj
-xcode_scheme: SZTextView
-xcode_sdk:
-  - iphonesimulator8.4
-  - iphonesimulator9.3
-  - iphonesimulator10.3
+before_install:
+  - brew update
+  - which ios-sim || brew install ios-sim
+install: true
+env:
+  global:
+    - ONLY_ACTIVE_ARCH=NO
+  matrix:
+    - IOS_VERSION=8.4
+    - IOS_VERSION=9.3
+    - IOS_VERSION=10.3
+script:
+  - xcodebuild -project SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone SE,OS=$IOS_VERSION" clean test
