@@ -1,5 +1,10 @@
 # Changelog
 
+**1.3.0**
+
+ - Allow use in application extensions -- #55 [@simonboots]
+ - Upgraded target platform to 8.0. Older versions are now unsupported.
+
 **1.2.2**
 
  - Carthage support -- #36 [@iv-mexx]
