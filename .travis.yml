@@ -12,4 +12,4 @@ env:
     - IOS_VERSION=9.3
     - IOS_VERSION=10.3
 script:
-  - xcodebuild -project SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone SE,OS=$IOS_VERSION" clean test
+  - xcodebuild -project SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone 5s,OS=$IOS_VERSION" clean test
