@@ -1,14 +1,8 @@
 language: objective-c
-before_install:
-  - brew update
-  - which ios-sim || brew install ios-sim
-install: true
-env:
-  global:
-    - ONLY_ACTIVE_ARCH=NO
-  matrix:
-    - IOS_VERSION=7.0.3
-    - IOS_VERSION=7.1
-    - IOS_VERSION=8.1
-script:
-  - xcodebuild -project Demo/SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone 4s,OS=$IOS_VERSION" clean test
+osx_image: xcode8.3
+xcode_project: SZTextView.xcodeproj
+xcode_scheme: SZTextView
+xcode_sdk:
+  - iphonesimulator8.4
+  - iphonesimulator9.3
+  - iphonesimulator10.3

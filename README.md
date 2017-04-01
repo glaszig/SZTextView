@@ -9,10 +9,7 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 ## Requirements
 
-Your iOS project. (Tested on iOS versions 7.x, 8.0. Should also work on 5.x and 6.x)
-
-> **Note**: This is ARC-enabled code. You'll need Xcode 4.2 and OS X 10.6, at least.  
-> **Note**: To run the tests you'll need Xcode 5 with XCTest.
+Your iOS project. Unit-tested on iOS 8.x, 9.x, 10.x -- see `.travis.yml` for details.
 
 ## Installation
 
