@@ -191,7 +191,6 @@
 				5B8D20D816F1717200D92F51 /* Sources */,
 				5B8D20D916F1717200D92F51 /* Frameworks */,
 				5B8D20DA16F1717200D92F51 /* Resources */,
-				5B8D20DB16F1717200D92F51 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -254,22 +253,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		5B8D20DB16F1717200D92F51 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		5B8D20B316F1717100D92F51 /* Sources */ = {
@@ -432,11 +415,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SZTextView.app/SZTextView";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
@@ -450,11 +428,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SZTextView.app/SZTextView";
-				FRAMEWORK_SEARCH_PATHS = (
-					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
-					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
-					"$(inherited)",
-				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "SZTextView/SZTextView-Prefix.pch";
 				INFOPLIST_FILE = "../SZTextViewTests/SZTextViewTests-Info.plist";
