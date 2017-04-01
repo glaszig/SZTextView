@@ -19,7 +19,7 @@ Either clone this repo and add the project to your Xcode workspace, use [CocoaPo
 Add this to you Podfile:
 
 ```ruby
-	pod 'SZTextView'
+pod 'SZTextView'
 ```
 
 #### Carthage
@@ -27,7 +27,7 @@ Add this to you Podfile:
 Add this line to your Cartfile:
 
 ```
-	github "glaszig/SZTextView"
+github "glaszig/SZTextView"
 ```
 
 ## Usage
