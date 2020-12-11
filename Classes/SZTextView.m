@@ -212,6 +212,16 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     return self._placeholderTextView.textColor;
 }
 
+- (void)setPlaceholderTextAlignment:(NSTextAlignment)placeholderTextAlignment
+{
+    self._placeholderTextView.textAlignment = self.placeholderTextAlignment;
+}
+
+- (NSTextAlignment)placeholderTextAlignment
+{
+    return self._placeholderTextView.textAlignment;
+}
+
 - (void)textDidChange:(NSNotification *)aNotification
 {
     [self setPlaceholderVisibleForText:self.text];
