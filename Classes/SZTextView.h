@@ -22,6 +22,6 @@ IB_DESIGNABLE
 @property (copy, nonatomic) IBInspectable NSString *placeholder;
 @property (nonatomic) IBInspectable double fadeTime;
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
-@property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
+@property (retain, nonatomic) IBInspectable UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
 
 @end
