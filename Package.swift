@@ -17,6 +17,7 @@ let package = Package(
         .target(
             name: "SZTextView",
             path: "Classes",
+            sources: ["Classes"],
             publicHeadersPath: "Classes")
     ]
 )
