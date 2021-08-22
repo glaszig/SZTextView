@@ -28,8 +28,8 @@
 		5B65306F1AFB933B009D7775 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5B6530761AFB933B009D7775 /* SZTextViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SZTextViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B65307D1AFB933B009D7775 /* SZTextViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SZTextViewTests.m; sourceTree = "<group>"; };
-		5B6530871AFB938A009D7775 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTextView.h; path = Classes/SZTextView.h; sourceTree = SOURCE_ROOT; };
-		5B6530881AFB938A009D7775 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = Classes/SZTextView.m; sourceTree = SOURCE_ROOT; };
+		5B6530871AFB938A009D7775 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SZTextView.h; path = SZTextView/Sources/SZTextView.h; sourceTree = SOURCE_ROOT; };
+		5B6530881AFB938A009D7775 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SZTextView.m; path = SZTextView/Sources/SZTextView.m; sourceTree = SOURCE_ROOT; };
 		5B65308B1AFB9441009D7775 /* SZTextViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SZTextViewTests-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -176,6 +176,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = 5B6530611AFB933B009D7775;
