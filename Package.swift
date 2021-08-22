@@ -14,6 +14,7 @@ let package = Package(
         .target(
             name: "SZTextView",
             path: "SZTextView",
+            exclude: ["Info.plist"],
             sources: ["Sources"],
             publicHeadersPath: "Sources")
     ]
