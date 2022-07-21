@@ -55,7 +55,7 @@ GEM
     netrc (0.7.8)
     ruby-macho (0.2.6)
     thread_safe (0.3.6)
-    tzinfo (1.2.3)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     xcodeproj (1.4.3)
       CFPropertyList (~> 2.3.3)
