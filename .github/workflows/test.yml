@@ -1,0 +1,19 @@
+name: test
+
+on:
+  push:
+  pull_request:
+jobs:
+  test:
+    strategy:
+      matrix:
+        ios:
+          - 16.2
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Build and Test
+        run: |
+          xcodebuild -project SZTextView.xcodeproj -scheme SZTextView -sdk iphonesimulator -configuration Debug -destination "platform=iOS Simulator,name=iPhone SE (3rd generation),OS=${{ matrix.ios }}" clean test
+

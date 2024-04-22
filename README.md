@@ -1,6 +1,5 @@
 # SZTextView 
 
-[![Build Status](https://travis-ci.org/glaszig/SZTextView.svg?branch=master)](https://travis-ci.org/glaszig/SZTextView)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 
 A drop-in UITextView replacement which gives you: a placeholder.  
@@ -8,7 +7,7 @@ Technically it differs from other solutions in that it tries to work like UIText
 
 ## Requirements
 
-Your iOS project. Unit-tested on iOS 8.x, 9.x, 10.x -- see `.travis.yml` for details.
+An iOS project. 
 
 ## Installation
 
