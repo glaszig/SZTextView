@@ -20,5 +20,6 @@ FOUNDATION_EXPORT const unsigned char SZTextViewVersionString[];
 @property (nonatomic) IBInspectable double fadeTime;
 @property (copy, nonatomic) NSAttributedString *attributedPlaceholder;
 @property (retain, nonatomic) UIColor *placeholderTextColor UI_APPEARANCE_SELECTOR;
+@property (assign, nonatomic) NSTextAlignment placeholderTextAlignment;
 
 @end
