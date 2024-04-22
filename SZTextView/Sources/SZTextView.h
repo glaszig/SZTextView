@@ -14,9 +14,6 @@ FOUNDATION_EXPORT double SZTextViewVersionNumber;
 //! Project version string for SZTextView.
 FOUNDATION_EXPORT const unsigned char SZTextViewVersionString[];
 
-
-IB_DESIGNABLE
-
 @interface SZTextView : UITextView
 
 @property (copy, nonatomic) IBInspectable NSString *placeholder;
