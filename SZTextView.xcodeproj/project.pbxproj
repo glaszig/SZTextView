@@ -173,10 +173,11 @@
 			};
 			buildConfigurationList = 5B6530651AFB933B009D7775 /* Build configuration list for PBXProject "SZTextView" */;
 			compatibilityVersion = "Xcode 3.2";
-			developmentRegion = English;
+			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 5B6530611AFB933B009D7775;
 			productRefGroup = 5B65306C1AFB933B009D7775 /* Products */;
