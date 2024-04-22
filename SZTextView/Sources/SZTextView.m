@@ -56,6 +56,15 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
 }
 #endif
 
++ (UIColor *)defaultPlaceholderColor
+{
+    if (@available(iOS 13.0, *)) {
+        return [UIColor placeholderTextColor];
+    } else {
+        return [UIColor colorWithWhite:0.7f alpha:0.7f];
+    }
+}
+
 - (void)preparePlaceholder
 {
     NSAssert(!self._placeholderTextView, @"placeholder has been prepared already: %@", self._placeholderTextView);
@@ -68,7 +77,7 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
     self._placeholderTextView = [[UITextView alloc] initWithFrame:frame];
     self._placeholderTextView.opaque = NO;
     self._placeholderTextView.backgroundColor = [UIColor clearColor];
-    self._placeholderTextView.textColor = [UIColor colorWithWhite:0.7f alpha:0.7f];
+    self._placeholderTextView.textColor = [self.class defaultPlaceholderColor];
     self._placeholderTextView.textAlignment = self.textAlignment;
     self._placeholderTextView.editable = NO;
     self._placeholderTextView.scrollEnabled = NO;
@@ -130,6 +139,13 @@ static NSString * const kTextAlignmentKey = @"textAlignment";
         [self addObserver:self forKeyPath:kTextContainerInsetKey
                   options:NSKeyValueObservingOptionNew context:nil];
     }
+}
+
+- (void)tintColorDidChange
+{
+    [super tintColorDidChange];
+
+    self._placeholderTextView.textColor = [self.class defaultPlaceholderColor];
 }
 
 - (void)setPlaceholder:(NSString *)placeholderText
